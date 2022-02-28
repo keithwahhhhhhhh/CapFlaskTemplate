@@ -1,3 +1,7 @@
 .bottom-image img{
     vertical-align:bottom;
     }
+.main_page {
+    height: 500 px;
+    width: 500 px;
+}
