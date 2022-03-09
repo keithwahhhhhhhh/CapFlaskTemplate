@@ -2,15 +2,6 @@
 
 {% block body %}
 
-    <!--List all errors in a group at the top-->
-    {% for field in form.errors %}
-        {% for error in form.errors[field] %}
-            <div class="alert alert-error">
-                <strong>Error!</strong>{{field}}: {{error}}
-            </div>
-        {% endfor %}
-    {% endfor %}
-
     <h1>Register</h1>
     <form action="" method="post" enctype="multipart/form-data">
         {{ form.hidden_tag() }}

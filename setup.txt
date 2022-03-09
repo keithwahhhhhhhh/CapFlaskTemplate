@@ -134,6 +134,9 @@ password via email if they forget. You should NOT use an email you currently use
 to write the password in a place that is not 100% secure.  So, go to gmail.com and create a new email account.
 Then add the address and the password the secrets file that is in the utils folder. 
 
+Finally, for the email recovery using a gmail account to work you need to turn on "less secure apps" 
+here https://myaccount.google.com/lesssecureapps.
+
 You should be ready to go!
 
 Run the main.py file. 
