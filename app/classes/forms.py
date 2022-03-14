@@ -60,10 +60,12 @@ class ProfileForm(FlaskForm):
     submit = SubmitField('Post')
     role = SelectField('Role',choices=[("User","User"),("Therapist","Therapist")])
     mascot = SelectField('Mascot',choices=[("Slug","Slug"),("Panther","Panther")])
+   
 
 class PostForm(FlaskForm):
     subject = StringField('Subject', validators=[DataRequired()])
     content = TextAreaField('Post', validators=[DataRequired()])
+    rating = SelectField('Rating',choices=[("1","1"),("2","2"),("3","3"),("4","4")("5","5")])
     submit = SubmitField('Post')
     
 

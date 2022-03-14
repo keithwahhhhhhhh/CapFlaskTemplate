@@ -23,6 +23,7 @@ class User(UserMixin, Document):
     image = FileField()
     role = StringField()
     mascot = StringField()
+    
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
 
@@ -47,6 +48,7 @@ class Post(Document):
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
     subject = StringField()
     content = StringField()
+    rating = StringField()
     createdate = DateTimeField(default=dt.datetime.utcnow)
     modifydate = DateTimeField()
 
