@@ -29,11 +29,17 @@
                 {% endif %}
                 {{post.author.username}}
             </div>
-            <div class="col">
+            <div class="col-2">
                 {% if loop.index == 1 %}
                     <h3 class="display-5">Subject</h3>
                 {% endif %}
                 {{post.subject}}
+            </div>
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                    <h3 class="display-5">Rating</h3>
+                {% endif %}
+                {{post.rating}}
             </div>
         </div>
     {% endfor %}

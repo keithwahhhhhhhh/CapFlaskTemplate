@@ -13,15 +13,25 @@
                     <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
-            <p>
-                {{ form.content.label }} <br>
-                {{ form.content(cols=64, rows=10) }}
-                <!--List the errors for this field-->
-                {% for error in form.content.errors %}
-                    <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
-            </p>
+           
+
+            {{ form.content.label }} <br>
+            {{ form.content(cols=64, rows=10) }}
+            <!--List the errors for this field-->
+            {% for error in form.rating.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
             
+        <p>
+            {{ form.rating.label }} <br>
+            {{ form.rating() }}
+            <!--List the errors for this field-->
+            {% for error in form.content.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            
+        </p>
             <p>
                 {{form.submit()}}
             </p>

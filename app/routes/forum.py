@@ -96,6 +96,7 @@ def postNew():
             # the right side is the data the user entered which is held in the form object.
             subject = form.subject.data,
             content = form.content.data,
+            rating = form.rating.data,
             author = current_user.id,
             # This sets the modifydate to the current datetime.
             modifydate = dt.datetime.utcnow
@@ -140,6 +141,7 @@ def postEdit(postID):
         editPost.update(
             subject = form.subject.data,
             content = form.content.data,
+            rating = form.rating.data,
             modifydate = dt.datetime.utcnow
         )
         # After updating the document, send the user to the updated post using a redirect.
@@ -149,6 +151,7 @@ def postEdit(postID):
     # and place it in the form object so it will be displayed to the user on the template.
     form.subject.data = editPost.subject
     form.content.data = editPost.content
+    form.rating.data = editPost.content
 
     # Send the user to the post form that is now filled out with the current information
     # from the form.
