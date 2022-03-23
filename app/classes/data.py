@@ -25,6 +25,8 @@ class User(UserMixin, Document):
     role = StringField()
     mascot = StringField()
     
+    
+    
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
 
