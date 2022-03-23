@@ -61,11 +61,12 @@ class ProfileForm(FlaskForm):
     mascot = SelectField('Mascot',choices=[("Slug","Slug"),("Panther","Panther")])
    
 
-class PostForm(FlaskForm):
-    subject = StringField('Subject', validators=[DataRequired()])
-    content = TextAreaField('Post', validators=[DataRequired()])
-    rating = SelectField('Rating',choices=[("1","1"),("2","2"),("3","3"),("4","4"),("5","5")])
-    submit = SubmitField('Post')
+class ResourcesForm(FlaskForm):
+    topic = StringField('Topic', validators=[DataRequired()])
+    description = TextAreaField('Description', validators=[DataRequired()])
+    type = SelectField('Type',choices=[("Video","Video"),("Article","Article"),("Other","Other")])
+    link = TextAreaField('Link', validators=[DataRequired()])
+    submit = SubmitField('Resource')
     
 
 class CommentForm(FlaskForm):
