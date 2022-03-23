@@ -2,11 +2,11 @@
 
 {% block body %}
 
-{% if Resources %}
+{% if post %}
 
-{{moment(Resources.createdate).calendar()}} by {{Resources.author.username}} 
-{% if Resources.modifydate %}
-    modified {{moment(Resources.modifydate).calendar()}}
+{{moment(post.createdate).calendar()}} by {{post.author.username}} 
+{% if post.modifydate %}
+    modified {{moment(post.modifydate).calendar()}}
 {% endif %}
 <br>
     {% if post.author == current_user %}
@@ -18,13 +18,13 @@
         </a>
     {% endif %}
 
-    <h1 class="display-5">Name of subject: {{Resources.topic}}</h1>
-    <h1 class="display-5">What type of resource is this?: {{Resources.type}}</h1>
+    <h1 class="display-5">Name of subject: {{post.subject}}</h1>
+    <h1 class="display-5">What type of resource is this?: {{post.content}}</h1>
     <p class="fs-3 text-break"> 
-        {% if Resources.author.image %}
+        {% if post.author.image %}
         <img width="120" class="img-thumbnail float-start me-2" src="data:image;base64,{{base64encode(post.author.image.read())}}">
         {% endif %}
-           Description for your resource: {{Resources.description}}
+           Your rating: {{post.rating}}
     </p>
     <a href="/comment/new/{{post.id}}" class="btn btn-primary btn-sm" role="button">New Comment</a>
 
