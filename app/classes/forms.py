@@ -73,6 +73,9 @@ class PostForm(FlaskForm):
     content = TextAreaField('Post', validators=[DataRequired()])
     rating = SelectField('Type',choices=[("1","1"),("2","2"),("3","3"),("4","4"),("5","5")])
     submit = SubmitField('Post')
+    
+    
+
 
     
 
