@@ -6,8 +6,8 @@
         <form method=post>
             {{ form.hidden_tag() }}
             <p>
-                {{ Resources.topic.label }} <br>
-                {{ Resources.topic(size=64) }}
+                {{ form.subject.label }} <br>
+                {{ form.topic(size=64) }}
                 <!--List the errors for this field-->
                 {% for error in Resources.topic.errors %}
                     <span style="color: red;">[{{ error }}]</span>
@@ -15,8 +15,8 @@
             </p>
            
 
-            {{ Resources.description.label }} <br>
-            {{ Resources.description(cols=64, rows=10) }}
+            {{ form.content.label }} <br>
+            {{ form.content(cols=64, rows=10) }}
             <!--List the errors for this field-->
             {% for error in Resources.description.errors %}
                 <span style="color: red;">[{{ error }}]</span>
@@ -24,10 +24,10 @@
         </p>
             
         <p>
-            {{ Resources.type.label }} <br>
-            {{ Resources.type() }}
+            {{ form.rating.label }} <br>
+            {{ form.rating() }}
             <!--List the errors for this field-->
-            {% for error in Resources.type.errors %}
+            {% for error in post.type.errors %}
                 <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
             
