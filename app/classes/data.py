@@ -47,20 +47,20 @@ class User(UserMixin, Document):
             return
         return User.objects.get(pk=id)
 
-# class Resources(Document):
-#     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
-#     topic = StringField()
-#     description = StringField()
-#     type = StringField()
-#     link = StringField()
-#     createdate = DateTimeField(default=dt.datetime.utcnow)
-#     modifydate = DateTimeField()
+class Resource(Document):
+    author = ReferenceField('User',reverse_delete_rule=CASCADE) 
+    topic = StringField()
+    description = StringField()
+    type = StringField()
+    link = StringField()
+    createdate = DateTimeField(default=dt.datetime.utcnow)
+    modifydate = DateTimeField()
 
 
 
-#     meta = {
-#         'ordering': ['-createdate']
-#     }
+    meta = {
+        'ordering': ['-createdate']
+    }
     
 class Post(Document):
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
