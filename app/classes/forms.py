@@ -60,10 +60,9 @@ class ProfileForm(FlaskForm):
     role = SelectField('Role',choices=[("User","User"),("Therapist","Therapist")])
     mascot = SelectField('Mascot',choices=[("Slug","Slug"),("Panther","Panther")])
    
-
 class ResourceForm(FlaskForm):
     topic = StringField('Topic', validators=[DataRequired()])
-    description = TextAreaField('Description', validators=[DataRequired()])
+    description = TextAreaField('Resource', validators=[DataRequired()])
     type = SelectField('Type',choices=[("Video","Video"),("Article","Article"),("Other","Other")])
     link = TextAreaField('Link', validators=[DataRequired()])
     submit = SubmitField('Resource')
@@ -74,11 +73,6 @@ class PostForm(FlaskForm):
     rating = SelectField('Type',choices=[("1","1"),("2","2"),("3","3"),("4","4"),("5","5")])
     submit = SubmitField('Post')
     
-    
-
-
-    
-
 class CommentForm(FlaskForm):
     content = TextAreaField('Comment', validators=[DataRequired()])
     submit = SubmitField('Comment')

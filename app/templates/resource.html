@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% if resource %}
+
+{{moment(resource.createdate).calendar()}} by {{resource.author.username}} 
+{% if resource.modifydate %}
+    modified {{moment(resource.modifydate).calendar()}}
+{% endif %}
+<br>
+    {% if resource.author == current_user %}
+        <a data-toggle="tooltip" data-placement="top" title="Delete Resource" href="/resource/delete/{{resource.id}}">
+            <img width="40" class="bottom-image" src="/static/delete.png">
+        </a>
+        <a data-toggle="tooltip" data-placement="top" title="Edit Resource" href="/resource/edit/{{resource.id}}">
+            <img width="40" class="bottom-image" src="/static/edit.png">
+        </a>
+    {% endif %}
+
+    <h1 class="display-5">Name of topic: {{resource.topic}}</h1>
+    <h1 class="display-5">What is this resource about?: {{resource.description}}</h1>
+    <p class="fs-3 text-break"> 
+        {% if resource.author.image %}
+        <img width="120" class="img-thumbnail float-start me-2" src="data:image;base64,{{base64encode(resource.author.image.read())}}">
+        {% endif %}
+           Type of resource: {{resource.type}}
+    </p>
+    <a href="/comment/new/{{resource.id}}" class="btn btn-primary btn-sm" role="button">New Comment</a>
+
+    <div class="ms-5">
+    {% if comments %}
+    <h1 class="display-5">Comments</h1>
+    {% for comment in comments %}
+        {% if current_user == comment.author %}
+            <a href="/comment/delete/{{comment.id}}"><img width="20" src="/static/delete.png"></a> 
+            <a href="/comment/edit/{{comment.id}}"><img width="20" src="/static/edit.png"></a>
+        {% endif %}
+        {{moment(comment.createdate).calendar()}} {{comment.author.username}} 
+        {% if comment.modifydate %}
+            modified {{moment(comment.modifydate).calendar()}}
+        {% endif %}
+        <br>
+        <p class="fs-3">
+            {{comment.content}}
+        </p>
+    {% endfor %}
+    {% else %}
+        <h1 class="display-5">No Comments</h1>
+    {% endif %}
+    </div>
+{% else %}
+    <h1 class="display-5">No Post</h1>
+{% endif %}
+
+{% endblock %}
