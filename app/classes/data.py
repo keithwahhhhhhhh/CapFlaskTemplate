@@ -77,6 +77,7 @@ class Comment(Document):
     # This could be used to allow comments on comments
     # comment = ReferenceField('Comment',reverse_delete_rule=CASCADE)
     content = StringField()
+    description = StringField()
     createdate = DateTimeField(default=dt.datetime.utcnow)
     modifydate = DateTimeField()
 

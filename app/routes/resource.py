@@ -42,7 +42,13 @@ def resource(resourceID):
     # the post object (thisPost in this case) to get all the comments.
     theseComments = Comment.objects(resource=thisResource)
     # Send the post object and the comments object to the 'post.html' template.
-    return render_template('resource.html',resource=thisResource)
+    return render_template('resource.html',resource=thisResource )
+
+
+#comments = theseComments 
+#comment section is currently broken
+
+
 
 # This route will delete a specific post.  You can only delete the post if you are the author.
 # <postID> is a variable sent to this route by the user who clicked on the trash can in the 
@@ -177,11 +183,11 @@ def commentNew1(resourceID):
         newComment = Comment(
             author = current_user.id,
             resource = resourceID,
-            description = form.description.data
+            
         )
         newComment.save()
         return redirect(url_for('resource',resourceID=resourceID))
-    return render_template('commentform.html',form=form,resource=resource)
+    return render_template('resourcescommentform.html',form=form,resource=resource)
 
 @app.route('/comment/edit/<commentID>', methods=['GET', 'POST'])
 @login_required
@@ -194,14 +200,14 @@ def commentEdit1(commentID):
     form = CommentForm()
     if form.validate_on_submit():
         editComment.update(
-            description= form.description.data,
+            description = form.description.data,
             modifydate = dt.datetime.utcnow
         )
         return redirect(url_for('resource',resourceID=editComment.resource.id))
 
-    form.content.data = editComment.content
+    # form.description.data = editComment.description
 
-    return render_template('commentform.html',form=form,resource=resource)   
+    return render_template('resourcesCommentForm.html',form=form,resource=resource)   
 
 @app.route('/comment/delete/<commentID>')
 @login_required
