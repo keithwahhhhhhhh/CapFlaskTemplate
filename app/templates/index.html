@@ -1,17 +1,38 @@
 {% extends 'base.html' %}
 <link rel="stylesheet" href="{{ url_for('static', filename='local.css') }}"  type="text/css" />
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 {% block body %}
-
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap" rel="stylesheet">
 
 
 <h1>Mental health and Social Media support</h1>
 <br> 
-<img class= "main_page"src = "/static/appicon.jpg"
-width = "650"
-height = "375">
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="/static/appicon.jpg" class="d-block w-100" alt="slide1">
+      </div>
+      <div class="carousel-item">
+        <img src="/static/mentalhealth.png" class="d-block w-100" alt="slide2">
+      </div>
+      <div class="carousel-item">
+        <img src="/static/mentalhealth2.png" class="d-block w-100" alt="slide3">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
 <br>
 <br>
-<h1>Videos</h1> 
-<br> 
-<h1> Articles</h1>
+<h2>Purpose:</h2>
+<br>
+<h4>The purpose of this website is to inform people about how the pandemic and social media affected mental health.</h4>
+<br>
+<br>
 {% endblock %}
