@@ -11,7 +11,7 @@ from app.classes.forms import ResourceForm, CommentForm
 from flask_login import login_required
 import datetime as dt
 
-# This is the route to list all posts
+# This is the route to list all resources
 @app.route('/resource/list')
 # This means the user must be logged in to see this page
 @login_required
@@ -42,7 +42,7 @@ def resource(resourceID):
     # the post object (thisPost in this case) to get all the comments.
     theseComments = Comment.objects(resource=thisResource)
     # Send the post object and the comments object to the 'post.html' template.
-    return render_template('resource.html',post=thisResource,comments=theseComments)
+    return render_template('resource.html',resource=thisResource)
 
 # This route will delete a specific post.  You can only delete the post if you are the author.
 # <postID> is a variable sent to this route by the user who clicked on the trash can in the 
