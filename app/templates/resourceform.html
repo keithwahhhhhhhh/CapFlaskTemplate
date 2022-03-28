@@ -24,10 +24,10 @@
         </p>
             
         <p>
-            {{ form.type.label }} <br>
-            {{ form.type() }}
+            {{ form.restype.label }} <br>
+            {{ form.restype() }}
             <!--List the errors for this field-->
-            {% for error in form.type.errors %}
+            {% for error in form.restype.errors %}
                 <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
             

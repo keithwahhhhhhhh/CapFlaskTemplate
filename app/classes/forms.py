@@ -63,14 +63,14 @@ class ProfileForm(FlaskForm):
 class ResourceForm(FlaskForm):
     topic = StringField('Topic', validators=[DataRequired()])
     description = TextAreaField('Resource', validators=[DataRequired()])
-    type = SelectField('Type',choices=[("Video","Video"),("Article","Article"),("Other","Other")])
+    restype = SelectField('Type',choices=[("Video","Video"),("Article","Article"),("Other","Other")])
     link = TextAreaField('Link', validators=[DataRequired()])
     submit = SubmitField('Resource')
 
 class PostForm(FlaskForm):
     subject = StringField('Subject', validators=[DataRequired()])
     content = TextAreaField('Post', validators=[DataRequired()])
-    rating = SelectField('Type',choices=[("1","1"),("2","2"),("3","3"),("4","4"),("5","5")])
+    rating = SelectField('Rating',choices=[("1","1"),("2","2"),("3","3"),("4","4"),("5","5")])
     submit = SubmitField('Post')
     
 class CommentForm(FlaskForm):

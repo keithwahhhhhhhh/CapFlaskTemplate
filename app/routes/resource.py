@@ -42,7 +42,7 @@ def resource(resourceID):
     # the post object (thisPost in this case) to get all the comments.
     theseComments = Comment.objects(resource=thisResource)
     # Send the post object and the comments object to the 'post.html' template.
-    return render_template('resource.html',resource=thisResource )
+    return render_template('resource.html',resource=thisResource)
 
 
 #comments = theseComments 
@@ -102,10 +102,9 @@ def resourceNew():
             # the right side is the data the user entered which is held in the form object.
             topic = form.topic.data,
             description = form.description.data,
-            type = form.type.data,
+            restype = form.restype.data,
             link = form.link.data,
             author = current_user.id,
-            # This sets the modifydate to the current datetime.
             modifydate = dt.datetime.utcnow
         )
         # This is a method that saves the data to the mongoDB database.
@@ -148,8 +147,8 @@ def ResourceEdit(resourceID):
         editResource.update(
             topic = form.topic.data,
             description = form.description.data,
-            type = form.type.data,
             link = form.link.data,
+            restype = form.restype.data,
             modifydate = dt.datetime.utcnow
         )
         # After updating the document, send the user to the updated post using a redirect.
@@ -159,7 +158,7 @@ def ResourceEdit(resourceID):
     # and place it in the form object so it will be displayed to the user on the template.
     form.topic.data = editResource.topic
     form.description.data = editResource.description
-    form.type.data = editResource.type
+    form.restype.data = editResource.restype
     form.link.data = editResource.link
 
     # Send the user to the post form that is now filled out with the current information
@@ -200,7 +199,7 @@ def commentEdit1(commentID):
     form = CommentForm()
     if form.validate_on_submit():
         editComment.update(
-            description = form.description.data,
+            #description = form.description.data,
             modifydate = dt.datetime.utcnow
         )
         return redirect(url_for('resource',resourceID=editComment.resource.id))

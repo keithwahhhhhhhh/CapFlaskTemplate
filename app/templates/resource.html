@@ -24,7 +24,7 @@
         {% if resource.author.image %}
         <img width="120" class="img-thumbnail float-start me-2" src="data:image;base64,{{base64encode(resource.author.image.read())}}">
         {% endif %}
-           Type of resource: {{resource.type}}
+         <p>  Type of resource: {{resource.restype}} </p>
     </p>
     <a href="/comment/new/{{resource.id}}" class="btn btn-primary btn-sm" role="button">New Comment</a>
 

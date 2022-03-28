@@ -49,7 +49,7 @@ class Resource(Document):
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
     topic = StringField()
     description = StringField()
-    type = StringField()
+    restype = StringField()
     link = StringField()
     createdate = DateTimeField(default=dt.datetime.utcnow)
     modifydate = DateTimeField()
@@ -77,7 +77,7 @@ class Comment(Document):
     # This could be used to allow comments on comments
     # comment = ReferenceField('Comment',reverse_delete_rule=CASCADE)
     content = StringField()
-    description = StringField()
+    #description = StringField()
     createdate = DateTimeField(default=dt.datetime.utcnow)
     modifydate = DateTimeField()
 
