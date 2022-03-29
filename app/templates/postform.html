@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block body %}
-        <h1></h1>
+        <h1>Create a new post</h1>
 
         <form method=post>
             {{ form.hidden_tag() }}
@@ -24,10 +24,10 @@
         </p>
             
         <p>
-            {{ form.rating.label }} <br>
-            {{ form.rating() }}
+            {{ form.posttopic.label }} <br>
+            {{ form.posttopic() }}
             <!--List the errors for this field-->
-            {% for error in form.rating.errors %}
+            {% for error in form.posttopic.errors %}
                 <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
             

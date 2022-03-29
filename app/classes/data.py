@@ -62,7 +62,7 @@ class Post(Document):
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
     subject = StringField()
     content = StringField()
-    rating = StringField()
+    posttopic = StringField()
     createdate = DateTimeField(default=dt.datetime.utcnow)
     modifydate = DateTimeField()
 
@@ -74,10 +74,11 @@ class Post(Document):
 class Comment(Document):
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
     post = ReferenceField('Post',reverse_delete_rule=CASCADE)
+    resource = ReferenceField('Resource',reverse_delete_rule=CASCADE)
     # This could be used to allow comments on comments
     # comment = ReferenceField('Comment',reverse_delete_rule=CASCADE)
     content = StringField()
-    #description = StringField()
+    description = StringField()
     createdate = DateTimeField(default=dt.datetime.utcnow)
     modifydate = DateTimeField()
 

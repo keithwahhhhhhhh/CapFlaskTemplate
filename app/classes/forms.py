@@ -70,7 +70,7 @@ class ResourceForm(FlaskForm):
 class PostForm(FlaskForm):
     subject = StringField('Subject', validators=[DataRequired()])
     content = TextAreaField('Post', validators=[DataRequired()])
-    rating = SelectField('Rating',choices=[("1","1"),("2","2"),("3","3"),("4","4"),("5","5")])
+    posttopic = StringField('postTopic', validators=[DataRequired()])
     submit = SubmitField('Post')
     
 class CommentForm(FlaskForm):

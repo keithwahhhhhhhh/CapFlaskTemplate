@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-4">
-        <h1 class="display-1">All Posts</h1>
+        <h5 class="display-2">Discussions</h5>
     </div>
     <div class="col">
         <a href="/post/new" class="btn btn-primary btn-sm mt-5" role="button">New Post</a>
@@ -31,15 +31,15 @@
             </div>
             <div class="col-2">
                 {% if loop.index == 1 %}
-                    <h3 class="display-5">Topic</h3>
+                    <h3 class="display-5">Title</h3>
                 {% endif %}
                 {{post.subject}}
             </div>
             <div class="col-2">
                 {% if loop.index == 1 %}
-                    <h3 class="display-5">Rating</h3>
+                    <h3 class="display-5">Topic</h3>
                 {% endif %}
-                {{post.rating}}
+                {{post.posttopic}}
             </div>
         </div>
     {% endfor %}

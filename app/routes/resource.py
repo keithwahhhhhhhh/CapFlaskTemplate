@@ -42,7 +42,7 @@ def resource(resourceID):
     # the post object (thisPost in this case) to get all the comments.
     theseComments = Comment.objects(resource=thisResource)
     # Send the post object and the comments object to the 'post.html' template.
-    return render_template('resource.html',resource=thisResource)
+    return render_template('resource.html',resource=thisResource, comments =theseComments)
 
 
 #comments = theseComments 
@@ -182,6 +182,7 @@ def commentNew1(resourceID):
         newComment = Comment(
             author = current_user.id,
             resource = resourceID,
+            description = form.description.data
             
         )
         newComment.save()
@@ -190,28 +191,28 @@ def commentNew1(resourceID):
 
 @app.route('/comment/edit/<commentID>', methods=['GET', 'POST'])
 @login_required
-def commentEdit1(commentID):
-    editComment = Comment.objects.get(id=commentID)
-    if current_user != editComment.author:
+def resCommentEdit(rescommentID):
+    resEditComment = Comment.objects.get(id=rescommentID)
+    if current_user != resEditComment.author:
         flash("You can't edit a comment you didn't write.")
-        return redirect(url_for('resource',resourceID=editComment.resource.id))
-    resource = Resource.objects.get(id=editComment.resource.id)
+        return redirect(url_for('resource',resourceID=resEditComment.resource.id))
+    resource = Resource.objects.get(id=resEditComment.resource.id)
     form = CommentForm()
     if form.validate_on_submit():
-        editComment.update(
+        resEditComment.update(
             #description = form.description.data,
             modifydate = dt.datetime.utcnow
         )
-        return redirect(url_for('resource',resourceID=editComment.resource.id))
+        return redirect(url_for('resource',resourceID=resEditComment.resource.id))
 
-    # form.description.data = editComment.description
+    form.description.data = resEditComment.description
 
     return render_template('resourcesCommentForm.html',form=form,resource=resource)   
 
 @app.route('/comment/delete/<commentID>')
 @login_required
-def commentDelete1(commentID): 
-    deleteComment = Comment.objects.get(id=commentID)
-    deleteComment.delete()
+def resCommentDelete(resCommentID): 
+    resDeleteComment = Comment.objects.get(id=resCommentID)
+    resDeleteComment.delete()
     flash('The comments was deleted.')
-    return redirect(url_for('resource',resourceID=deleteComment.resource.id)) 
+    return redirect(url_for('resource',resourceID=resDeleteComment.resource.id)) 
