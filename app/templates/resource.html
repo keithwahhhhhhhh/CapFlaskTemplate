@@ -19,6 +19,7 @@
     {% endif %}
 
     <h1 class="display-5">Name of topic: {{resource.topic}}</h1>
+    <br>
     <h1 class="display-5">What is this resource about?: {{resource.description}}</h1>
     <p class="fs-3 text-break"> 
         {% if resource.author.image %}
@@ -26,23 +27,26 @@
         {% endif %}
          <p>  Type of resource: {{resource.restype}} </p>
     </p>
-    <a href="/comment/new/{{resource.id}}" class="btn btn-primary btn-sm" role="button">New Comment</a>
-
+    <br>
+    <a href="/resComment/new/{{resource.id}}" class="btn btn-primary btn-sm" role="button">New Comment</a>
+    <br>
     <div class="ms-5">
-    {% if comments %}
+    {% if resComments %}
+    <br>
     <h1 class="display-5">Comments</h1>
-    {% for comment in comments %}
-        {% if current_user == comment.author %}
-            <a href="/comment/delete/{{comment.id}}"><img width="20" src="/static/delete.png"></a> 
-            <a href="/comment/edit/{{comment.id}}"><img width="20" src="/static/edit.png"></a>
+    <br>
+    {% for resComment in resComments %}
+        {% if current_user == resComment.author %}
+            <a href="/resComment/delete/{{resComment.id}}"><img width="20" src="/static/delete.png"></a> 
+            <a href="/resComment/edit/{{resComment.id}}"><img width="20" src="/static/edit.png"></a>
         {% endif %}
-        {{moment(comment.createdate).calendar()}} {{comment.author.username}} 
-        {% if comment.modifydate %}
-            modified {{moment(comment.modifydate).calendar()}}
+        {{moment(resComment.createdate).calendar()}} {{resComment.author.username}} 
+        {% if resComment.modifydate %}
+            modified {{moment(resComment.modifydate).calendar()}}
         {% endif %}
         <br>
         <p class="fs-3">
-            {{comment.description}}
+            {{resComment.resDescription}}
         </p>
     {% endfor %}
     {% else %}

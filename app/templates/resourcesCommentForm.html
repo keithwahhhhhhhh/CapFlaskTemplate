@@ -11,16 +11,16 @@
         {% endfor %}
 
         <h1 class="display-5">{{resource.topic}}</h1>
-        {{resource.description}} <br>
+        {{resource.resDescription}} <br>
         <h1 class="display-5">New Comment</h1>
 
         <form method=post>
             {{ form.hidden_tag() }}
             
-            {{ form.description.label }} <br>
-            {{ form.description(cols=64) }}
+            {{ form.resDescription.label }} <br>
+            {{ form.resDescription(cols=64) }}
             <!--List the errors for this field-->
-            {% for error in form.description.errors %}
+            {% for error in form.resDescription.errors %}
                 <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
             <br>

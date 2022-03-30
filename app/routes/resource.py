@@ -6,8 +6,8 @@ from app import app, login
 import mongoengine.errors
 from flask import render_template, flash, redirect, url_for
 from flask_login import current_user
-from app.classes.data import Resource, Comment
-from app.classes.forms import ResourceForm, CommentForm
+from app.classes.data import Resource, resComment
+from app.classes.forms import ResourceForm, resCommentForm
 from flask_login import login_required
 import datetime as dt
 
@@ -40,9 +40,9 @@ def resource(resourceID):
     # there is a field on the comment collection called 'post' that is a reference the Post
     # document it is related to.  You can use the postID to get the post and then you can use
     # the post object (thisPost in this case) to get all the comments.
-    theseComments = Comment.objects(resource=thisResource)
+    resTheseComments = resComment.objects(resource=thisResource)
     # Send the post object and the comments object to the 'post.html' template.
-    return render_template('resource.html',resource=thisResource, comments =theseComments)
+    return render_template('resource.html',resource=thisResource, resComments = resTheseComments)
 
 
 #comments = theseComments 
@@ -173,46 +173,46 @@ def ResourceEdit(resourceID):
 # about how comments are related to posts.  Additionally, take a look at data.py to see how the
 # relationship is defined in the Post and the Comment collections.
 
-@app.route('/comment/new/<resourceID>', methods=['GET', 'POST'])
+@app.route('/resComment/new/<resourceID>', methods=['GET', 'POST'])
 @login_required
-def commentNew1(resourceID):
+def resCommentNew(resourceID):
     resource = Resource.objects.get(id=resourceID)
-    form = CommentForm()
+    form = resCommentForm()
     if form.validate_on_submit():
-        newComment = Comment(
+        newResComment = resComment(
             author = current_user.id,
             resource = resourceID,
-            description = form.description.data
+            resDescription = form.resDescription.data
             
         )
-        newComment.save()
+        newResComment.save()
         return redirect(url_for('resource',resourceID=resourceID))
     return render_template('resourcescommentform.html',form=form,resource=resource)
 
 @app.route('/comment/edit/<commentID>', methods=['GET', 'POST'])
 @login_required
-def resCommentEdit(rescommentID):
-    resEditComment = Comment.objects.get(id=rescommentID)
+def resCommentEdit(resCommentID):
+    resEditComment = resComment.objects.get(id=resCommentID)
     if current_user != resEditComment.author:
         flash("You can't edit a comment you didn't write.")
         return redirect(url_for('resource',resourceID=resEditComment.resource.id))
     resource = Resource.objects.get(id=resEditComment.resource.id)
-    form = CommentForm()
+    form = resCommentForm()
     if form.validate_on_submit():
         resEditComment.update(
-            #description = form.description.data,
+            resDescription = form.resDescription.data,
             modifydate = dt.datetime.utcnow
         )
         return redirect(url_for('resource',resourceID=resEditComment.resource.id))
 
-    form.description.data = resEditComment.description
+    form.resDescription.data = resEditComment.resDescription
 
     return render_template('resourcesCommentForm.html',form=form,resource=resource)   
 
 @app.route('/comment/delete/<commentID>')
 @login_required
 def resCommentDelete(resCommentID): 
-    resDeleteComment = Comment.objects.get(id=resCommentID)
+    resDeleteComment = resComment.objects.get(id=resCommentID)
     resDeleteComment.delete()
     flash('The comments was deleted.')
     return redirect(url_for('resource',resourceID=resDeleteComment.resource.id)) 
