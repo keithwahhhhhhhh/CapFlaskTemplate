@@ -2,24 +2,24 @@
 
 {% block body %}
 
-{% if post %}
+{% if task %}
 
-{{moment(post.createdate).calendar()}} by {{post.author.username}} 
-{% if post.modifydate %}
-    modified {{moment(post.modifydate).calendar()}}
+{{moment(task.createdate).calendar()}} by {{task.author.username}} 
+{% if task.modifydate %}
+    modified {{moment(task.modifydate).calendar()}}
 {% endif %}
 <br>
-    {% if post.author == current_user %}
-        <a data-toggle="tooltip" data-placement="top" title="Delete Post" href="/post/delete/{{post.id}}">
+    {% if task.author == current_user %}
+        <a data-toggle="tooltip" data-placement="top" title="Delete Response" href="/task/delete/{{task.id}}">
             <img width="40" class="bottom-image" src="/static/delete.png">
         </a>
-        <a data-toggle="tooltip" data-placement="top" title="Edit Post" href="/post/edit/{{post.id}}">
+        <a data-toggle="tooltip" data-placement="top" title="Edit Response" href="/task/edit/{{task.id}}">
             <img width="40" class="bottom-image" src="/static/edit.png">
         </a>
     {% endif %}
 
-    <h1 class="display-5">Title: {{post.subject}}</h1>
-    <h1 class="display-5">Topic: {{post.posttopic}} </h1>
+    <h1 class="display-5">Title: {{}}</h1>
+    <h1 class="display-5">Topic: {{}} </h1>
     <br>
     <br>
     <h1 class="display-5"> {{post.content}}</h1>

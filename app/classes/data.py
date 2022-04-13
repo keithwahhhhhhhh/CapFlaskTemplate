@@ -57,6 +57,26 @@ class Resource(Document):
     meta = {
         'ordering': ['-createdate']
     }
+
+class Task(Document):
+    author = ReferenceField('User',reverse_delete_rule=CASCADE) 
+    sleepTime = StringField()
+    work = StringField()
+    exercise = StringField()
+    exercises = StringField()
+    moodRating = StringField()
+    meals = StringField()
+    meal = StringField()
+    thoughts = StringField()
+    dental = StringField()
+    shower = StringField()
+
+    createdate = DateTimeField(default=dt.datetime.utcnow)
+    modifydate = DateTimeField()
+
+    meta = {
+        'ordering': ['-createdate']
+    }
     
 class Post(Document):
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 

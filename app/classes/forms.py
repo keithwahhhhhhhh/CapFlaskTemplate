@@ -2,13 +2,14 @@
 # and users fill them out.  Each form is an instance of a class. Forms are managed by the 
 # Flask-WTForms library.
 
+from msilib.schema import RadioButton
 from flask.app import Flask
 from flask import flash
 from flask_wtf import FlaskForm
 from mongoengine.fields import EmailField
 import mongoengine.errors
 from wtforms.validators import URL, NumberRange, Email, Optional, InputRequired, ValidationError, DataRequired, EqualTo
-from wtforms import PasswordField, StringField, SubmitField, TextAreaField, HiddenField, IntegerField, SelectField, FileField, BooleanField
+from wtforms import PasswordField, StringField, SubmitField, TextAreaField, HiddenField, IntegerField, SelectField, FileField, BooleanField, SelectMultipleField
 from app.classes.data import User
 
 class LoginForm(FlaskForm):
@@ -67,6 +68,19 @@ class ResourceForm(FlaskForm):
     link = TextAreaField('Link', validators=[DataRequired()])
     submit = SubmitField('Resource')
 
+class TaskForm(FlaskForm):
+    sleepTime = SelectField('sleepTime',choices=[("Less than 1 hour","Less than 1 Hour "),("1 Hour","1 Hour"),("2 Hours","2 Hours"),("2 Hours","2 Hours"),("3 Hours","3 Hours"),("4 Hours","4 Hours"),("5 Hours","5 Hours"),("6 Hours","6 Hours"),("7 Hours","7 Hours"),("8 Hours","8 Hours"),("9 Hours","9 Hours"),("10 Hours","10 Hours"),("10+ Hours","10+ Hours")])
+    work = SelectField('work',choices=[("All work completed","All work completed"),("Most work completed","Most work completed"),("A good amount of work completed","A good amount of work completed"),("Very little work completed","Very little work completed"),("No work completed","No work completed")])
+    exercise = SelectField('exercise',choices=[("Yes","Yes"),("No","No")])
+    exercises = TextAreaField('exercises', validators=[DataRequired()])
+    moodRating = SelectField('moodRating',choices=[("1","2"),("2","2"),("3","3"),("4","4"),("5","5"),("6","6"),("7","7"),("8","8"),("9","9"),("10","10")])
+    meals = SelectMultipleField('meals',choices=[("Breakfast","Breakfast"),("Lunch","Lunch"),("","Lunch")])
+    meal = StringField('Meal', validators=[DataRequired()])
+    thoughts = StringField('thoughts', validators=[DataRequired()])
+    dental = SelectField('dental',choices=[("Brushed once, no flossing","Brushed once, no flossing"),("Brushed twice, no flossing","Brushed twice, no flossing"),("Brushed once with flossing","Brushed once with flossing"),("Brushed twice with flossing","Brushed twice with flossing"),("Other","Other")])
+    shower = StringField('shower', validators=[DataRequired()])
+    submit = SubmitField('Task')
+
 class PostForm(FlaskForm):
     subject = StringField('Subject', validators=[DataRequired()])
     content = TextAreaField('Post', validators=[DataRequired()])
@@ -75,7 +89,6 @@ class PostForm(FlaskForm):
     
 class CommentForm(FlaskForm):
     content = TextAreaField('Comment', validators=[DataRequired()])
-    #description = TextAreaField('Comment', validators=[DataRequired()])
     submit = SubmitField('Comment')
 
 class resCommentForm(FlaskForm):
