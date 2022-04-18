@@ -66,20 +66,33 @@ class ResourceForm(FlaskForm):
     description = TextAreaField('Resource', validators=[DataRequired()])
     restype = SelectField('Type',choices=[("Video","Video"),("Article","Article"),("Other","Other")])
     link = TextAreaField('Link', validators=[DataRequired()])
-    submit = SubmitField('Resource')
+    submit = SubmitField('Submit')
 
 class TaskForm(FlaskForm):
     sleepTime = SelectField('sleepTime',choices=[("Less than 1 hour","Less than 1 Hour "),("1 Hour","1 Hour"),("2 Hours","2 Hours"),("2 Hours","2 Hours"),("3 Hours","3 Hours"),("4 Hours","4 Hours"),("5 Hours","5 Hours"),("6 Hours","6 Hours"),("7 Hours","7 Hours"),("8 Hours","8 Hours"),("9 Hours","9 Hours"),("10 Hours","10 Hours"),("10+ Hours","10+ Hours")])
     work = SelectField('work',choices=[("All work completed","All work completed"),("Most work completed","Most work completed"),("A good amount of work completed","A good amount of work completed"),("Very little work completed","Very little work completed"),("No work completed","No work completed")])
     exercise = SelectField('exercise',choices=[("Yes","Yes"),("No","No")])
     exercises = TextAreaField('exercises', validators=[DataRequired()])
-    moodRating = SelectField('moodRating',choices=[("1","2"),("2","2"),("3","3"),("4","4"),("5","5"),("6","6"),("7","7"),("8","8"),("9","9"),("10","10")])
-    meals = SelectMultipleField('meals',choices=[("Breakfast","Breakfast"),("Lunch","Lunch"),("","Lunch")])
-    meal = StringField('Meal', validators=[DataRequired()])
-    thoughts = StringField('thoughts', validators=[DataRequired()])
+    moodRating = SelectField('moodRating',choices=[("1","1"),("2","2"),("3","3"),("4","4"),("5","5"),("6","6"),("7","7"),("8","8"),("9","9"),("10","10")])
+    meals = SelectField('meals',choices=[("Breakfast","Breakfast"),("Lunch","Lunch"),("Dinner","Dinner")])
+    meal = TextAreaField('Meal', validators=[DataRequired()])
+    thoughts = TextAreaField('thoughts', validators=[DataRequired()])
     dental = SelectField('dental',choices=[("Brushed once, no flossing","Brushed once, no flossing"),("Brushed twice, no flossing","Brushed twice, no flossing"),("Brushed once with flossing","Brushed once with flossing"),("Brushed twice with flossing","Brushed twice with flossing"),("Other","Other")])
-    shower = StringField('shower', validators=[DataRequired()])
-    submit = SubmitField('Task')
+    shower = SelectField('exercise',choices=[("Yes","Yes"),("No","No")])
+    submit = SubmitField('Enter Entry')
+
+class TherapistForm(FlaskForm):
+    docName = StringField('docName', validators=[DataRequired()])
+    docEmail = StringField('docEmail', validators=[DataRequired()])
+    docLocation = StringField('docLocation', validators=[DataRequired()])
+    docDescription = TextAreaField('docDescription', validators=[DataRequired()])
+    gender = StringField('gender', validators=[DataRequired()])
+    ethnicity = StringField('ethnicity', validators=[DataRequired()])
+    age = StringField('age', validators=[DataRequired()])
+    sexuality = StringField('sexuality', validators=[DataRequired()])
+    timesAvailable = StringField('timesAvailable', validators=[DataRequired()])
+       
+    submit = SubmitField('Submit')
 
 class PostForm(FlaskForm):
     subject = StringField('Subject', validators=[DataRequired()])
@@ -93,4 +106,8 @@ class CommentForm(FlaskForm):
 
 class resCommentForm(FlaskForm):
     resDescription = TextAreaField('Comment', validators=[DataRequired()])
+    submit = SubmitField('resComment')
+    
+class TPCommentForm(FlaskForm):
+    TPDescription = TextAreaField('Comment', validators=[DataRequired()])
     submit = SubmitField('resComment')

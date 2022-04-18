@@ -13,15 +13,12 @@ import datetime as dt
 
 # This is the route to list all resources
 @app.route('/task/list')
-# This means the user must be logged in to see this page
+
 @login_required
 def taskList():
-    # This retrieves all of the 'posts' that are stored in MongoDB and places them in a
-    # mongoengine object as a list of dictionaries name 'posts'.
+
     tasks = Task.objects()
-    # This renders (shows to the user) the posts.html template. it also sends the posts object 
-    # to the template as a variable named posts.  The template uses a for loop to display
-    # each post.
+
     return render_template('tasks.html',tasks=tasks)
 
 @app.route('/task/<taskID>')
@@ -49,10 +46,10 @@ def taskDelete(taskID):
         # delete the post using the delete() method from Mongoengine
         deleteTask.delete()
         # send a message to the user that the post was deleted.
-        flash('The response was deleted.')
+        flash('The entry was deleted.')
     else:
         # if the user is not the author tell them they were denied.
-        flash("You can't delete a response you don't own.")
+        flash("You can't delete an entry you don't own.")
     # Retrieve all of the remaining posts so that they can be listed.
     tasks = Task.objects()  
     # Send the user to the list of remaining posts.
@@ -84,7 +81,7 @@ def taskNew():
             # the left side is the name of the field from the data table
             # the right side is the data the user entered which is held in the form object.
             
-            sleepTime= form.sleepTime.data,
+            sleepTime = form.sleepTime.data,
             work = form.work.data,
             exercise = form.exercise.data,
             exercises = form.exercises.data,
@@ -98,22 +95,16 @@ def taskNew():
             author = current_user.id,
             modifydate = dt.datetime.utcnow
         )
-        # This is a method that saves the data to the mongoDB database.
+        
         newTask.save()
 
-        # Once the new post is saved, this sends the user to that post using redirect.
-        # and url_for. Redirect is used to redirect a user to different route so that 
-        # routes code can be run. In this case the user just created a post so we want 
-        # to send them to that post. url_for takes as its argument the function name
-        # for that route (the part after the def key word). You also need to send any
-        # other values that are needed by the route you are redirecting to.
         return redirect(url_for('task',taskID=newTask.id))
 
     # if form.validate_on_submit() is false then the user either has not yet filled out
     # the form or the form had an error and the user is sent to a blank form. Form errors are 
     # stored in the form object and are displayed on the form. take a look at postform.html to 
     # see how that works.
-    return render_template('task.html',form=form)
+    return render_template('taskform.html',form=form)
 
 
 # This route enables a user to edit a post.  This functions very similar to creating a new 
@@ -128,8 +119,8 @@ def TaskEdit(taskID):
     # send them back to the post. If True, this will exit the route completely and none
     # of the rest of the route will be run.
     if current_user != editTask.author:
-        flash("You can't edit a resource you don't own.")
-        return redirect(url_for('task',resourceID=taskID))
+        flash("You can't edit an entry you don't own.")
+        return redirect(url_for('task',taskID=taskID))
     # get the form object
     form = TaskForm()
     # If the user has submitted the form then update the post.

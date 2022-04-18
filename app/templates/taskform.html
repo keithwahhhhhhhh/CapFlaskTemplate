@@ -1,40 +1,118 @@
 {% extends "base.html" %}
 
 {% block body %}
-        <h1>Create a new post</h1>
-
+        <h1>Record what did for the day here</h1> 
+        <br>
         <form method=post>
             {{ form.hidden_tag() }}
+           
             <p>
-                {{ form.subject.label }} <br>
-                {{ form.subject(size=64) }}
+                Rate how you felt today 1-10 <br>
+                {{ form.moodRating() }}
                 <!--List the errors for this field-->
-                {% for error in form.subject.errors %}
+                {% for error in form.moodRating.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+                
+            </p>
+            <br>
+            <p>
+                Amount of time you slept for: <br>
+                {{ form.sleepTime(size=12) }}
+                <!--List the errors for this field-->
+                {% for error in form.sleepTime.errors %}
                     <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
            
-
-            {{ form.content.label }} <br>
-            {{ form.content(cols=64, rows=10) }}
+            <br>
+            <p>How much work did you do?</p> 
+            {{ form.work(cols=64, rows=10) }}
             <!--List the errors for this field-->
-            {% for error in form.content.errors %}
+            {% for error in form.work.errors %}
                 <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
-            
+            <br>
         <p>
-            {{ form.posttopic.label }} <br>
-            {{ form.posttopic() }}
+            Did you exercise? <br>
+            {{ form.exercise() }}
             <!--List the errors for this field-->
-            {% for error in form.posttopic.errors %}
+            {% for error in form.exercise.errors %}
                 <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
             
         </p>
+        <br>
+        <p>
+            What did you do for exericse? <br>
+            {{ form.exercises() }}
+            <!--List the errors for this field-->
+            {% for error in form.exercises.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            
+        </p>
+
+        <br>
+        <p>
+            Which of these did you have? <br>
+            {{ form.meals() }}
+            <!--List the errors for this field-->
+            {% for error in form.meals.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            
+        </p>
+        <br>
+        <p>
+            What did you eat? <br>
+            {{ form.meal() }}
+            <!--List the errors for this field-->
+            {% for error in form.meal.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            
+        </p>
+        <br>
+        <p>
+            How many times did you brush? <br>
+            {{ form.dental() }}
+            <!--List the errors for this field-->
+            {% for error in form.dental.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            
+        </p>
+        <br>
+        <p>
+            Did you shower? <br>
+            {{ form.shower() }}
+            <!--List the errors for this field-->
+            {% for error in form.shower.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            
+        </p>
+        <br>
+        <p>
+            Anything else you want to write about? <br>
+            {{ form.thoughts() }}
+            <!--List the errors for this field-->
+            {% for error in form.thoughts.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            
+        </p>
+
+        <br>
+
             <p>
                 {{form.submit()}}
             </p>
         </form>
         
 {% endblock %}
+
+
+

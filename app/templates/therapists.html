@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col-4">
+        <h5 class="display-2">Availible Therapists</h5>
+    </div>
+    <div class="col">
+        <a href="/therapist/new" class="btn btn-primary btn-sm mt-5" role="button">New Post</a>
+    </div>
+</div>
+
+{% if therapists %}
+    {% for therapists in therapists %}
+        <div class="row border-bottom">
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                <h3 class="display-5">Date</h3>
+                {% endif %}
+
+                <a href="/post/{{post.id}}">
+                    {{moment(therapists.createdate).calendar()}}
+                </a>
+            </div>
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                <h3 class="display-5">User</h3>
+                {% endif %}
+                {{therapist.author.username}}
+            </div>
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                    <h3 class="display-5">Title</h3>
+                {% endif %}
+                {{post.subject}}
+            </div>
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                    <h3 class="display-5">Topic</h3>
+                {% endif %}
+                {{post.posttopic}}
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+    <h1>No Posts</h1>
+{% endif %}
+
+{% endblock %}

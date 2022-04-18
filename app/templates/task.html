@@ -10,53 +10,49 @@
 {% endif %}
 <br>
     {% if task.author == current_user %}
-        <a data-toggle="tooltip" data-placement="top" title="Delete Response" href="/task/delete/{{task.id}}">
+        <a data-toggle="tooltip" data-placement="top" title="Delete Entry" href="/task/delete/{{task.id}}">
             <img width="40" class="bottom-image" src="/static/delete.png">
         </a>
-        <a data-toggle="tooltip" data-placement="top" title="Edit Response" href="/task/edit/{{task.id}}">
+        <a data-toggle="tooltip" data-placement="top" title="Edit Entry" href="/task/edit/{{task.id}}">
             <img width="40" class="bottom-image" src="/static/edit.png">
         </a>
+        <br>
     {% endif %}
-
-    <h1 class="display-5">Title: {{}}</h1>
-    <h1 class="display-5">Topic: {{}} </h1>
     <br>
+    <h1 class="display-7">Mood rating: {{task.moodRating}}</h1>
     <br>
-    <h1 class="display-5"> {{post.content}}</h1>
+    <h1 class="display-7">Amount of sleep: {{task.sleepTime}}</h1>
+    <br>
+    <h1 class="display-7">Amount of work: {{task.work}}</h1>
+    <br>
+    <h1 class="display-7">Did you exercise: {{task.exercise}}</h1>
+    <br>
+    <h1 class="display-7">Exercises: {{task.exercises}}</h1>
+    <br>
+    <h1 class="display-7">Exercises: {{task.exercises}}</h1>
+    <br>
+    <h1 class="display-7">Meals: {{task.meals}}</h1>
+    <br>
+    <h1 class="display-7">What you ate: {{task.meal}}</h1>
+    <br>
+    <h1 class="display-7">Did you brush your teeth: {{task.dental}}</h1>
+    <br>
+    <h1 class="display-7">Did you shower: {{task.shower}}</h1>
+    <br>
+    <h1 class="display-7">Thoughts: {{task.thoughts}}</h1>
     <p class="fs-3 text-break"> 
-        {% if post.author.image %}
-        <img width="120" class="img-thumbnail float-start me-2" src="data:image;base64,{{base64encode(post.author.image.read())}}">
+        {% if task.author.image %}
+        <img width="120" class="img-thumbnail float-start me-2" src="data:image;base64,{{base64encode(task.author.image.read())}}">
         {% endif %}
-
+        
     </p>
     <br>
+    
     <br>
-    <a href="/comment/new/{{post.id}}" class="btn btn-primary btn-sm" role="button">New Comment</a>
 
-    <div class="ms-5">
-    {% if comments %}
-    <h1 class="display-5">Comments</h1>
-    {% for comment in comments %}
-        {% if current_user == comment.author %}
-            <a href="/comment/delete/{{comment.id}}"><img width="20" src="/static/delete.png"></a> 
-            <a href="/comment/edit/{{comment.id}}"><img width="20" src="/static/edit.png"></a>
-        {% endif %}
-        {{moment(comment.createdate).calendar()}} {{comment.author.username}} 
-        {% if comment.modifydate %}
-            modified {{moment(comment.modifydate).calendar()}}
-        {% endif %}
-        <br>
-        <p class="fs-3">
-            {{comment.content}}
-        </p>
-    {% endfor %}
-    {% else %}
-    <br>
-        <h1 class="display-5">No Comments</h1>
-    {% endif %}
-    </div>
+    
 {% else %}
-    <h1 class="display-5">No Post</h1>
+    <h1 class="display-5">Something went wrong</h1>
 {% endif %}
 
 {% endblock %}

@@ -77,6 +77,25 @@ class Task(Document):
     meta = {
         'ordering': ['-createdate']
     }
+
+class Therapist(Document):
+    author = ReferenceField('User',reverse_delete_rule=CASCADE) 
+    docName = StringField()
+    docEmail = StringField()
+    docDescription = StringField()
+    gender = StringField()
+    ethnicity = StringField()
+    age = StringField()
+    docLocation = StringField()
+    sexuality = StringField()
+    timesAvailable = StringField()
+
+    createdate = DateTimeField(default=dt.datetime.utcnow)
+    modifydate = DateTimeField()
+
+    meta = {
+        'ordering': ['-createdate']
+    }
     
 class Post(Document):
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
@@ -110,6 +129,18 @@ class resComment(Document):
     post = ReferenceField('Post',reverse_delete_rule=CASCADE)
     resource = ReferenceField('Resource',reverse_delete_rule=CASCADE)
     resDescription = StringField()
+    createdate = DateTimeField(default=dt.datetime.utcnow)
+    modifydate = DateTimeField()
+
+    meta = {
+        'ordering': ['-createdate']
+    }
+
+class TPComment(Document):
+    author = ReferenceField('User',reverse_delete_rule=CASCADE) 
+    post = ReferenceField('Post',reverse_delete_rule=CASCADE)
+    resource = ReferenceField('Resource',reverse_delete_rule=CASCADE)
+    TPDescription = StringField()
     createdate = DateTimeField(default=dt.datetime.utcnow)
     modifydate = DateTimeField()
 

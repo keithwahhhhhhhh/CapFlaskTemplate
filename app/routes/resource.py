@@ -44,12 +44,6 @@ def resource(resourceID):
     # Send the post object and the comments object to the 'post.html' template.
     return render_template('resource.html',resource=thisResource, resComments = resTheseComments)
 
-
-#comments = theseComments 
-#comment section is currently broken
-
-
-
 # This route will delete a specific post.  You can only delete the post if you are the author.
 # <postID> is a variable sent to this route by the user who clicked on the trash can in the 
 # template 'post.html'. 
