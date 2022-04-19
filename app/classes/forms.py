@@ -91,7 +91,6 @@ class TherapistForm(FlaskForm):
     age = StringField('age', validators=[DataRequired()])
     sexuality = StringField('sexuality', validators=[DataRequired()])
     timesAvailable = StringField('timesAvailable', validators=[DataRequired()])
-       
     submit = SubmitField('Submit')
 
 class PostForm(FlaskForm):
@@ -106,8 +105,8 @@ class CommentForm(FlaskForm):
 
 class resCommentForm(FlaskForm):
     resDescription = TextAreaField('Comment', validators=[DataRequired()])
-    submit = SubmitField('resComment')
+    submit = SubmitField('Submit')
     
 class TPCommentForm(FlaskForm):
     TPDescription = TextAreaField('Comment', validators=[DataRequired()])
-    submit = SubmitField('resComment')
+    submit = SubmitField('Submit')

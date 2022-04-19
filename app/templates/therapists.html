@@ -3,24 +3,24 @@
 {% block body %}
 
 <div class="row">
-    <div class="col-4">
-        <h5 class="display-2">Availible Therapists</h5>
+    <div class="col-3">
+        <h5 class="display-5">Available Therapists</h5>
     </div>
     <div class="col">
-        <a href="/therapist/new" class="btn btn-primary btn-sm mt-5" role="button">New Post</a>
+        <a href="/therapist/new" class="btn btn-primary btn-sm mt-5" role="button">Introduce yourself as a therapist.</a>
     </div>
 </div>
 
 {% if therapists %}
-    {% for therapists in therapists %}
+    {% for therapist in therapists %}
         <div class="row border-bottom">
             <div class="col-2">
                 {% if loop.index == 1 %}
                 <h3 class="display-5">Date</h3>
                 {% endif %}
 
-                <a href="/post/{{post.id}}">
-                    {{moment(therapists.createdate).calendar()}}
+                <a href="/therapist/{{therapist.id}}">
+                    {{moment(therapist.createdate).calendar()}}
                 </a>
             </div>
             <div class="col-2">
@@ -31,15 +31,27 @@
             </div>
             <div class="col-2">
                 {% if loop.index == 1 %}
-                    <h3 class="display-5">Title</h3>
+                    <h3 class="display-7">Therapist Name</h3>
                 {% endif %}
-                {{post.subject}}
+                {{therapist.docName}}
             </div>
             <div class="col-2">
                 {% if loop.index == 1 %}
-                    <h3 class="display-5">Topic</h3>
+                    <h3 class="display-6">Age:</h3>
                 {% endif %}
-                {{post.posttopic}}
+                {{therapist.age}} 
+            </div>
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                    <h3 class="display-6">Gender:</h3>
+                {% endif %}
+                {{therapist.gender}} 
+            </div>
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                    <h3 class="display-6">Ethnicity:</h3>
+                {% endif %}
+                {{therapist.ethnicity}} 
             </div>
         </div>
     {% endfor %}

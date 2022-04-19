@@ -1,3 +1,20 @@
 body {
-    background-color: rgb(230, 230, 230);
+    background: linear-gradient(90deg, rgba(219,218,230,1) 0%, rgba(246,235,51,1) 33%, rgba(0,212,255,1) 75%);
 }
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+.navbar {
+    background: linear-gradient(to right, rgba(196, 113, 245, 1), rgba(250, 113, 205, 1))
+}
+/* 
+LINKS FOR GRADIENTS TO CHANGE THE NAVBAR
+https://cssgradient.io/
+https://www.w3schools.com/css/css3_gradients.asp
+
+*/

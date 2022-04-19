@@ -8,10 +8,20 @@
             {{ form.hidden_tag() }}
            
             <p>
-                what is your name? <br>
+                What is your name? <br>
                 {{ form.docName() }}
                 <!--List the errors for this field-->
                 {% for error in form.docName.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+                
+            </p>
+            <br>
+            <p>
+                What is your email? <br>
+                {{ form.docEmail() }}
+                <!--List the errors for this field-->
+                {% for error in form.docEmail.errors %}
                     <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
                 

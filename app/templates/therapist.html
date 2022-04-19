@@ -2,11 +2,11 @@
 
 {% block body %}
 
-{% if post %}
+{% if therapist %}
 
 {{moment(therapist.createdate).calendar()}} by {{therapist.author.username}} 
 {% if therapist.modifydate %}
-    modified {{moment(post.modifydate).calendar()}}
+    modified {{moment(therapist.modifydate).calendar()}}
 {% endif %}
 <br>
     {% if therapist.author == current_user %}
@@ -22,8 +22,6 @@
     <br>
     <h1 class="display-5">Age: {{therapist.age}} </h1>
     <br>
-    <h1 class="display-5">Description: {{therapist.docDescription}}</h1>
-    <br>
     <h1 class="display-5">Location: {{therapist.docLocation}}</h1>
     <br>
     <h1 class="display-5">Gender: {{therapist.gender}}</h1>
@@ -34,31 +32,35 @@
     <br>
     <h1 class="display-5">Times Available: {{therapist.timesAvailable}}</h1>
     <br>
+    <h1 class="display-5">Email: {{therapist.docEmail}}</h1>
+    <br>
+    <h1 class="display-5">Description: {{therapist.docDescription}}</h1>
+    <br>
     <p class="fs-3 text-break"> 
-        {% if post.author.image %}
+        {% if therapist.author.image %}
         <img width="120" class="img-thumbnail float-start me-2" src="data:image;base64,{{base64encode(therapist.author.image.read())}}">
         {% endif %}
 
     </p>
     <br>
     <br>
-    <a href="/comment/new/{{therapist.id}}" class="btn btn-primary btn-sm" role="button">New Comment</a>
+    <a href="/TPComment/new/{{therapist.id}}" class="btn btn-primary btn-sm" role="button">New Comment</a>
 
     <div class="ms-5">
-    {% if comments %}
+    {% if TPComments %}
     <h1 class="display-5">Comments</h1>
-    {% for comment in comments %}
-        {% if current_user == comment.author %}
-            <a href="/comment/delete/{{comment.id}}"><img width="20" src="/static/delete.png"></a> 
-            <a href="/comment/edit/{{comment.id}}"><img width="20" src="/static/edit.png"></a>
+    {% for TPComment in TPComments %}
+        {% if current_user == TPComment.author %}
+            <a href="/TPComment/delete/{{TPComment.id}}"><img width="20" src="/static/delete.png"></a> 
+            <a href="/TPComment/edit/{{TPComment.id}}"><img width="20" src="/static/edit.png"></a>
         {% endif %}
-        {{moment(comment.createdate).calendar()}} {{comment.author.username}} 
-        {% if comment.modifydate %}
-            modified {{moment(comment.modifydate).calendar()}}
+        {{moment(TPComment.createdate).calendar()}} {{TPComment.author.username}} 
+        {% if TPComment.modifydate %}
+            modified {{moment(TPComment.modifydate).calendar()}}
         {% endif %}
         <br>
         <p class="fs-3">
-            {{comment.TPDescription}}
+            {{TPComment.TPDescription}}
         </p>
     {% endfor %}
     {% else %}
