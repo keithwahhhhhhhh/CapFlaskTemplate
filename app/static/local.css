@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(90deg, rgba(219,218,230,1) 0%, rgba(246,235,51,1) 33%, rgba(0,212,255,1) 75%);
+    background: linear-gradient(90deg, rgb(104, 211, 154) 20%, rgba(29,219,211,1) 87%);
 }
 
 .center {
@@ -10,7 +10,8 @@ body {
   }
 
 .navbar {
-    background: linear-gradient(to right, rgba(196, 113, 245, 1), rgba(250, 113, 205, 1))
+    background: rgb(90,243,255);
+    background: linear-gradient(90deg, rgba(90,243,255,1) 32%, rgba(199,123,255,1) 65%);
 }
 /* 
 LINKS FOR GRADIENTS TO CHANGE THE NAVBAR
