@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+<link rel="stylesheet" href="{{ url_for('static', filename='local.css') }}" type ="text/css"/>
 {% block body %}
         <!--List all errors in a group at the top-->
         {% for field in form.errors %}

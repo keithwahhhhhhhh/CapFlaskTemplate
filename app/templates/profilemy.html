@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block body %}
+<link rel="stylesheet" href="{{ url_for('static', filename='local.css') }}" type ="text/css"/>
 <h1 class="display-1">
     My Profile
     <a href="/myprofile/edit">
@@ -14,7 +15,7 @@
         {% if current_user.image %}
             <img class="img-thumbnail img-fluid" src="data:image;base64,{{base64encode(current_user.image.read())}}"> <br>
         {% else %}
-            <img class="img-thumbnail" width = "100" src="/static/bdog.jpg">
+            <img class="img-thumbnail" width = "100" src="/static/appicon.jpg">
         {% endif %} 
     </div>
     <div class="col display-5">

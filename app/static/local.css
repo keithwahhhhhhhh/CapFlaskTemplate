@@ -1,5 +1,6 @@
 body {
     background: linear-gradient(90deg, rgb(104, 211, 154) 20%, rgba(29,219,211,1) 87%);
+    font-family: 'Nunito', sans-serif;
 }
 
 .center {
@@ -19,3 +20,8 @@ https://cssgradient.io/
 https://www.w3schools.com/css/css3_gradients.asp
 
 */
+
+.img-with-text {
+    font-size: 15px;
+    text-align: center;
+}
