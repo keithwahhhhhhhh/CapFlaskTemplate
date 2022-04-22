@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='local.css') }}" type ="text/css"/>
+
+<h1>Videos</h1>
+<br>
+<video width="320" height="240" controls>
+    <source src="movie.mp4" type="video/mp4">
+    <source src="movie.ogg" type="video/ogg">
+  Your browser does not support the video tag.
+  </video>
+{% endblock %}

@@ -40,13 +40,7 @@
             {% endfor %}
         </p>
 
-        <p>
-            {{ form.mascot.label }}<br>
-            {{ form.mascot() }}<br>
-            {% for error in form.mascot.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
+        
         <p>{{ form.submit() }}</p>
     </form>
 
