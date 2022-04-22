@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 
 {% block body %}
-        <h1></h1>
+        <h1>Upload a resource </h1>
+        <br>
 
         <form method=post>
             {{ form.hidden_tag() }}
@@ -24,10 +25,10 @@
         </p>
             
         <p>
-            {{ form.type.label }} <br>
-            {{ form.type() }}
+            {{ form.restype.label }} <br>
+            {{ form.restype() }}
             <!--List the errors for this field-->
-            {% for error in form.type.errors %}
+            {% for error in form.restype.errors %}
                 <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
             

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% if task %}
+
+{{moment(task.createdate).calendar()}} by {{task.author.username}} 
+{% if task.modifydate %}
+    modified {{moment(task.modifydate).calendar()}}
+{% endif %}
+<br>
+    {% if task.author == current_user %}
+        <a data-toggle="tooltip" data-placement="top" title="Delete Entry" href="/task/delete/{{task.id}}">
+            <img width="40" class="bottom-image" src="/static/delete.png">
+        </a>
+        <a data-toggle="tooltip" data-placement="top" title="Edit Entry" href="/task/edit/{{task.id}}">
+            <img width="40" class="bottom-image" src="/static/edit.png">
+        </a>
+        <br>
+    {% endif %}
+    <br>
+    <h1 class="display-7">Mood rating: {{task.moodRating}}</h1>
+    <br>
+    <h1 class="display-7">Amount of sleep: {{task.sleepTime}}</h1>
+    <br>
+    <h1 class="display-7">Amount of work: {{task.work}}</h1>
+    <br>
+    <h1 class="display-7">Did you exercise: {{task.exercise}}</h1>
+    <br>
+    <h1 class="display-7">Exercises: {{task.exercises}}</h1>
+    <br>
+    <h1 class="display-7">Exercises: {{task.exercises}}</h1>
+    <br>
+    <h1 class="display-7">Meals: {{task.meals}}</h1>
+    <br>
+    <h1 class="display-7">What you ate: {{task.meal}}</h1>
+    <br>
+    <h1 class="display-7">Did you brush your teeth: {{task.dental}}</h1>
+    <br>
+    <h1 class="display-7">Did you shower: {{task.shower}}</h1>
+    <br>
+    <h1 class="display-7">Thoughts: {{task.thoughts}}</h1>
+    <p class="fs-3 text-break"> 
+        {% if task.author.image %}
+        <img width="120" class="img-thumbnail float-start me-2" src="data:image;base64,{{base64encode(task.author.image.read())}}">
+        {% endif %}
+        
+    </p>
+    <br>
+    
+    <br>
+
+    
+{% else %}
+    <h1 class="display-5">Something went wrong</h1>
+{% endif %}
+
+{% endblock %}

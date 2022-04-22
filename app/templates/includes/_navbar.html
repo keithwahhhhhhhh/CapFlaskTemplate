@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='local.css') }}" type ="text/css"/>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">
@@ -11,21 +12,43 @@ height = "50">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="/post/list">Posts</a>
+          <a class="nav-link" href="/post/list">
+          <img class = "main_page" src = "/static/discussionicon.png"
+          width = "50"
+          height = "50">
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/resource/list">Resources</a>
+          <a class="nav-link" href="/resource/list">
+          <img src="/static/resourcesicon.png"
+          height = "50"
+          width = "50">  
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/task/list">
+          <img src="/static/taskicon.jpg"
+          height = "50"
+          width = "50">  
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/therapist/list">
+          <img src="/static/therapyicon2.png"
+          height = "50"
+          width = "50">  
+          </a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Other tabs
+          <img src ="/static/menuicon.png"
+          height = "50"
+          width = "50">
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="videos">VIDEOS</a></li>
             <li><a class="dropdown-item" href="#">ARTICLES</a></li>
-            <li><a class="dropdown-item" href="aboutus">ABOUT US</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">THERAPY</a></li>
+            <li><a class="dropdown-item" href="/aboutus">ABOUT US</a></li>
           </ul>
         </li>
       </ul>
@@ -36,7 +59,7 @@ height = "50">
           </li>
         {% else %}
           <li class="nav-item">
-            <a class="nav-link" href="/myprofile">{{ current_user.username }}</a>
+            <a class="nav-link" href="/myprofile">Username: {{ current_user.username }}</a>
           </li>          
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>

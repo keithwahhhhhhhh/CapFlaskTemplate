@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col-4">
+        <h5 class="display-2">Daily Tasks</h5>
+    </div>
+    <div class="col">
+        <a href="/task/new" class="btn btn-primary btn-sm mt-5" role="button">Enter your entry for the day: </a>
+    </div>
+</div>
+
+{% if tasks %}
+    {% for task in tasks %}
+        <div class="row border-bottom">
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                <h3 class="display-5">Date</h3>
+                {% endif %}
+
+                <a href="/task/{{task.id}}">
+                    {{moment(task.createdate).calendar()}}
+                </a>
+            </div>
+            <div class="col-3">
+                {% if loop.index == 1 %}
+                    <h3 class="display-7">How you felt that day</h3>
+                {% endif %}
+                {{task.moodRating}}
+            </div>
+            <div class="col-3">
+                {% if loop.index == 1 %}
+                    <h3 class="display-7">How long did you sleep today?</h3>
+                {% endif %}
+                {{task.sleepTime}}
+            </div>
+            <div class="col-3">
+                {% if loop.index == 1 %}
+                    <h3 class="display-7">Amount of work for the day:</h3>
+                {% endif %}
+                {{task.work}}
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+<br> 
+<br>     
+<h2>No data entered yet.</h2>
+{% endif %}
+
+{% endblock %}

@@ -3,61 +3,60 @@
 {% block body %}
 
 <div class="row">
-    <div class="col-2">
-        <h2 class="display-7">All Resources</h2>
+    <div class="col-3">
+        <h5 class="display-5">Available Therapists</h5>
     </div>
-    
     <div class="col">
-        <a href="/resource/new" class="btn btn-primary btn-sm mt-5" role="button">Upload a resource</a>
+        <a href="/therapist/new" class="btn btn-primary btn-sm mt-5" role="button">Introduce yourself as a therapist.</a>
     </div>
 </div>
 
-{% if resources %}
-    {% for resource in resources %}
+{% if therapists %}
+    {% for therapist in therapists %}
         <div class="row border-bottom">
             <div class="col-2">
                 {% if loop.index == 1 %}
                 <h3 class="display-5">Date</h3>
                 {% endif %}
 
-                <a href="/resource/{{resource.id}}">
-                    {{moment(resource.createdate).calendar()}}
+                <a href="/therapist/{{therapist.id}}">
+                    {{moment(therapist.createdate).calendar()}}
                 </a>
             </div>
             <div class="col-2">
                 {% if loop.index == 1 %}
                 <h3 class="display-5">User</h3>
                 {% endif %}
-                {{resource.author.username}}
+                {{therapist.author.username}}
             </div>
             <div class="col-2">
                 {% if loop.index == 1 %}
-                    <h3 class="display-5">Topic</h3>
+                    <h3 class="display-7">Therapist Name</h3>
                 {% endif %}
-                {{resource.topic}}
+                {{therapist.docName}}
             </div>
             <div class="col-2">
                 {% if loop.index == 1 %}
-                    <h5 class="display-5">Desc.</h5>
+                    <h3 class="display-6">Age:</h3>
                 {% endif %}
-                {{resource.description}}
+                {{therapist.age}} 
             </div>
             <div class="col-2">
                 {% if loop.index == 1 %}
-                    <h3 class="display-5">Type</h3>
+                    <h3 class="display-6">Gender:</h3>
                 {% endif %}
-                {{resource.restype}}
+                {{therapist.gender}} 
             </div>
             <div class="col-2">
                 {% if loop.index == 1 %}
-                <h3 class="display-5">Link</h3>
+                    <h3 class="display-6">Ethnicity:</h3>
                 {% endif %}
-                {{resource.link}}
+                {{therapist.ethnicity}} 
             </div>
         </div>
     {% endfor %}
 {% else %}
-    <h1>No Resources</h1>
+    <h1>No Posts</h1>
 {% endif %}
 
 {% endblock %}

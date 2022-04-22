@@ -1,7 +1,21 @@
-.bottom-image img{
-    vertical-align:bottom;
-    }
-.main_page {
-    height: 500 px;
-    width: 500 px;
+body {
+    background: linear-gradient(90deg, rgb(104, 211, 154) 20%, rgba(29,219,211,1) 87%);
 }
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+.navbar {
+    background: rgb(90,243,255);
+    background: linear-gradient(90deg, rgba(90,243,255,1) 32%, rgba(199,123,255,1) 65%);
+}
+/* 
+LINKS FOR GRADIENTS TO CHANGE THE NAVBAR
+https://cssgradient.io/
+https://www.w3schools.com/css/css3_gradients.asp
+
+*/

@@ -1,9 +1,3 @@
-# This is where all the database collections are defined. A collection is a place to hold a defined 
-# set of data like Users, Posts, Comments. Collections are defined below as classes. Each class name is 
-# the name of the data collection and each item is a data 'field' that stores a piece of data.  Data 
-# fields have types like IntField, StringField etc.  This uses the Mongoengine Python Library. When 
-# you interact with the data you are creating an onject that is an instance of the class.
-
 from app import app
 from flask import flash
 from flask_login import UserMixin
@@ -49,8 +43,46 @@ class Resource(Document):
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
     topic = StringField()
     description = StringField()
-    type = StringField()
+    restype = StringField()
     link = StringField()
+    createdate = DateTimeField(default=dt.datetime.utcnow)
+    modifydate = DateTimeField()
+
+    meta = {
+        'ordering': ['-createdate']
+    }
+
+class Task(Document):
+    author = ReferenceField('User',reverse_delete_rule=CASCADE) 
+    sleepTime = StringField()
+    work = StringField()
+    exercise = StringField()
+    exercises = StringField()
+    moodRating = StringField()
+    meals = StringField()
+    meal = StringField()
+    thoughts = StringField()
+    dental = StringField()
+    shower = StringField()
+
+    createdate = DateTimeField(default=dt.datetime.utcnow)
+    modifydate = DateTimeField()
+
+    meta = {
+        'ordering': ['-createdate']
+    }
+
+class Therapist(Document):
+    author = ReferenceField('User',reverse_delete_rule=CASCADE) 
+    docName = StringField()
+    docEmail = StringField()
+    docDescription = StringField()
+    gender = StringField()
+    ethnicity = StringField()
+    age = StringField()
+    docLocation = StringField()
+    sexuality = StringField()
+    timesAvailable = StringField()
     createdate = DateTimeField(default=dt.datetime.utcnow)
     modifydate = DateTimeField()
 
@@ -62,7 +94,7 @@ class Post(Document):
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
     subject = StringField()
     content = StringField()
-    rating = StringField()
+    posttopic = StringField()
     createdate = DateTimeField(default=dt.datetime.utcnow)
     modifydate = DateTimeField()
 
@@ -74,9 +106,31 @@ class Post(Document):
 class Comment(Document):
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
     post = ReferenceField('Post',reverse_delete_rule=CASCADE)
-    # This could be used to allow comments on comments
-    # comment = ReferenceField('Comment',reverse_delete_rule=CASCADE)
     content = StringField()
+    createdate = DateTimeField(default=dt.datetime.utcnow)
+    modifydate = DateTimeField()
+
+    meta = {
+        'ordering': ['-createdate']
+    }
+
+class resComment(Document):
+    author = ReferenceField('User',reverse_delete_rule=CASCADE) 
+    post = ReferenceField('Post',reverse_delete_rule=CASCADE)
+    resource = ReferenceField('Resource',reverse_delete_rule=CASCADE)
+    resDescription = StringField()
+    createdate = DateTimeField(default=dt.datetime.utcnow)
+    modifydate = DateTimeField()
+
+    meta = {
+        'ordering': ['-createdate']
+    }
+
+class TPComment(Document):
+    author = ReferenceField('User',reverse_delete_rule=CASCADE) 
+    post = ReferenceField('Post',reverse_delete_rule=CASCADE)
+    therapist = ReferenceField('Therapist',reverse_delete_rule=CASCADE)
+    TPDescription = StringField()
     createdate = DateTimeField(default=dt.datetime.utcnow)
     modifydate = DateTimeField()
 
