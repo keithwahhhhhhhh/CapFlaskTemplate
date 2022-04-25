@@ -17,3 +17,7 @@ def videos():
 @app.route('/articles')
 def articles():
     return render_template('articles.html')
+
+@app.route('/activities')
+def activities():
+    return render_template('activities.html')

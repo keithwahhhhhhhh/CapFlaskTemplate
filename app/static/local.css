@@ -24,9 +24,24 @@ https://www.w3schools.com/css/css3_gradients.asp
 .img-with-text {
     font-size: 15px;
     text-align: center;
+    margin-bottom: -25px;
+    margin-top: -5px;
 }
 
 .centertext {
     font-size: 30px;
     text-align: center;
+}
+
+.sign-in {
+    font-size: 20px;
+    
+}
+
+.menu {
+    margin-top: 10px;
+}
+
+.videos {
+    font-size: 30px;
 }
