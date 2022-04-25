@@ -1,10 +1,14 @@
-<link rel="stylesheet" href="{{ url_for('static', filename='local.css') }}" type ="text/css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
+<link rel="icon" href="/static/homeicon.png">
+  <div class="container-fluid img-with-text">
     <a class="navbar-brand" href="/">
       <img class= "main_page"src = "/static/homeicon.png"
 width = "50"
 height = "50">
+<p><b>Home</b></p>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -16,6 +20,7 @@ height = "50">
           <img class = "main_page" src = "/static/discussionicon.png"
           width = "50"
           height = "50">
+          <p><b>Discussion  </b></p>
           </a>
         </li>
         <li class="nav-item">
@@ -23,6 +28,7 @@ height = "50">
           <img src="/static/resourcesicon.png"
           height = "50"
           width = "50">  
+          <p><b> Resources</b> </p>
           </a>
         </li>
         <li class="nav-item">
@@ -30,6 +36,7 @@ height = "50">
           <img src="/static/taskicon.jpg"
           height = "50"
           width = "50">  
+          <p><b>Daily Survey</b>  </p>
           </a>
         </li>
         <li class="nav-item">
@@ -37,32 +44,34 @@ height = "50">
           <img src="/static/therapyicon2.png"
           height = "50"
           width = "50">  
+          <p> <b>Therapists</b> </p>
           </a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src ="/static/menuicon.png"
+          <img class = "menu" src ="/static/menuicon.png"
           height = "50"
           width = "50">
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="videos">VIDEOS</a></li>
-            <li><a class="dropdown-item" href="#">ARTICLES</a></li>
-            <li><a class="dropdown-item" href="/aboutus">ABOUT US</a></li>
+            <li><a class="dropdown-item" href="/videos">Videos</a></li>
+            <li><a class="dropdown-item" href="/articles">Articles</a></li>
+            <li><a class="dropdown-item" href="/activities">Activities</a></li>
+            <li><a class="dropdown-item" href="/aboutus">About Us</a></li>
           </ul>
         </li>
       </ul>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         {% if current_user.is_anonymous %}
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+            <a class="nav-link" href="{{ url_for('login') }}"><b class = "sign-in"> Login</b></a>
           </li>
         {% else %}
           <li class="nav-item">
-            <a class="nav-link" href="/myprofile">Username: {{ current_user.username }}</a>
+            <a class="nav-link" href="/myprofile"><b class = "sign-in">Username: {{ current_user.username }}</b> </a>
           </li>          
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+            <a class="nav-link" href="{{ url_for('logout') }}"><b class = "sign-in">Logout </b></a>
           </li>
           {% endif %}
         </li>

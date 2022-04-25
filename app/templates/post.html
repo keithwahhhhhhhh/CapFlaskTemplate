@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block body %}
-
+<link rel="stylesheet" href="{{ url_for('static', filename='local.css') }}" type ="text/css"/>
 {% if post %}
 
 {{moment(post.createdate).calendar()}} by {{post.author.username}} 

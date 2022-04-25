@@ -59,7 +59,7 @@ class ProfileForm(FlaskForm):
     image = FileField("Image") 
     submit = SubmitField('Post')
     role = SelectField('Role',choices=[("User","User"),("Therapist","Therapist")])
-    mascot = SelectField('Mascot',choices=[("Slug","Slug"),("Panther","Panther")])
+    #mascot = SelectField('Mascot',choices=[("Slug","Slug"),("Panther","Panther")])
    
 class ResourceForm(FlaskForm):
     topic = StringField('Topic', validators=[DataRequired()])
