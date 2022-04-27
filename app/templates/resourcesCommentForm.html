@@ -2,7 +2,7 @@
 
 {% block body %}
 <link rel="stylesheet" href="{{ url_for('static', filename='local.css') }}" type ="text/css"/>
-        <!--List all errors in a group at the top-->
+
         {% for field in form.errors %}
             {% for error in form.errors[field] %}
                 <div class="alert alert-error">
@@ -20,7 +20,7 @@
             
             {{ form.resDescription.label }} <br>
             {{ form.resDescription(cols=64) }}
-            <!--List the errors for this field-->
+
             {% for error in form.resDescription.errors %}
                 <span style="color: red;">[{{ error }}]</span>
             {% endfor %}

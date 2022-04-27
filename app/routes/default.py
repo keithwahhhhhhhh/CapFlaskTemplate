@@ -1,7 +1,6 @@
 from app import app
 from flask import render_template
 
-# This is for rendering the home page
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -21,3 +20,7 @@ def articles():
 @app.route('/activities')
 def activities():
     return render_template('activities.html')
+
+@app.route('/graph')
+def graph():
+    return render_template('moodGraph.html')

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<link rel="stylesheet" href="{{ url_for('static', filename='local.css') }}" type ="text/css"/>
+<div class="row">
+    <div class="col-4">
+        <h5 class="display-6">Mood Rating from Daily Tasks</h5>
+    </div>
+    <div class="col">
+        <a href="/task/new" class="btn btn-dark btn-sm mt-4" role="button">Enter your entry for the day: </a>
+    </div>
+</div>
+
+{% if tasks %}
+    {% for task in tasks %}
+        <div class="row borderBottom">
+            <div class="col-6">
+                {% if loop.index == 1 %}
+                <h3 class="display-5 borderBottom">Date</h3>
+                {% endif %}
+
+                <a href="/task/{{task.id}}">
+                    {{moment(task.createdate).calendar()}}
+                </a>
+            </div>
+            <div class="col-6">
+                {% if loop.index == 1 %}
+                    <h3 class="display-5 borderBottom">Mood rating 1-10</h3>
+                {% endif %}
+                {{task.moodRating}}
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+<br> 
+<br>     
+<h2>No data entered yet.</h2>
+{% endif %}
+
+{% endblock %}

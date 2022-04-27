@@ -1,7 +1,3 @@
-# This file is where data entry forms are created. Forms are placed on templates 
-# and users fill them out.  Each form is an instance of a class. Forms are managed by the 
-# Flask-WTForms library.
-
 from msilib.schema import RadioButton
 from flask.app import Flask
 from flask import flash
@@ -59,7 +55,6 @@ class ProfileForm(FlaskForm):
     image = FileField("Image") 
     submit = SubmitField('Post')
     role = SelectField('Role',choices=[("User","User"),("Therapist","Therapist")])
-    #mascot = SelectField('Mascot',choices=[("Slug","Slug"),("Panther","Panther")])
    
 class ResourceForm(FlaskForm):
     topic = StringField('Topic', validators=[DataRequired()])

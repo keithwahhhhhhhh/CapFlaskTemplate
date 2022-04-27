@@ -10,7 +10,7 @@
             <p>
                 <b>Title</b> <br>
                 {{ form.topic(size=64) }}
-                <!--List the errors for this field-->
+
                 {% for error in form.topic.errors %}
                     <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
@@ -19,7 +19,7 @@
             <p>
                 <b>Type of resource: </b> <br>
                 {{ form.restype() }}
-                <!--List the errors for this field-->
+
                 {% for error in form.restype.errors %}
                     <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
@@ -28,7 +28,7 @@
 
             <b>Enter text here:</b> <br>
             {{ form.description(cols=64, rows=10) }}
-            <!--List the errors for this field-->
+
             {% for error in form.description.errors %}
                 <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
@@ -38,7 +38,7 @@
         <p>
            <b>{{ form.link.label }}</b>  <br>
             {{ form.link(size=64) }}
-            <!--List the errors for this field-->
+
             {% for error in form.link.errors %}
                 <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
