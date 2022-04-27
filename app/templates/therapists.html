@@ -4,19 +4,19 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='local.css') }}" type ="text/css"/>
 <div class="row">
     <div class="col-3">
-        <h5 class="display-5">Available Therapists</h5>
+        <h4 class="display-4"><b>Available Therapists </b></h4>
     </div>
-    <div class="col">
-        <a href="/therapist/new" class="btn btn-primary btn-sm mt-5" role="button">Introduce yourself as a therapist.</a>
+    <div class="col-4">
+        <a href="/therapist/new" class="btn btn-dark btn-sm mt-5" role="button">Introduce yourself as a therapist.</a>
     </div>
 </div>
 
 {% if therapists %}
     {% for therapist in therapists %}
-        <div class="row border-bottom">
+        <div class="row borderBottom">
             <div class="col-2">
                 {% if loop.index == 1 %}
-                <h3 class="display-5">Date</h3>
+                <h3 class="display-5 borderBottom">Date</h3>
                 {% endif %}
 
                 <a href="/therapist/{{therapist.id}}">
@@ -25,31 +25,31 @@
             </div>
             <div class="col-2">
                 {% if loop.index == 1 %}
-                <h3 class="display-5">User</h3>
+                <h3 class="display-5 borderBottom"><b>User: </b></h3>
                 {% endif %}
                 {{therapist.author.username}}
             </div>
             <div class="col-2">
                 {% if loop.index == 1 %}
-                    <h3 class="display-7">Therapist Name</h3>
+                    <h3 class="display-5 borderBottom"><b> Name: </b></h3>
                 {% endif %}
                 {{therapist.docName}}
             </div>
             <div class="col-2">
                 {% if loop.index == 1 %}
-                    <h3 class="display-6">Age:</h3>
+                    <h3 class="display-5 borderBottom"><b>Age: </b></h3>
                 {% endif %}
                 {{therapist.age}} 
             </div>
             <div class="col-2">
                 {% if loop.index == 1 %}
-                    <h3 class="display-6">Gender:</h3>
+                    <h3 class="display-5 borderBottom"><b>Gender:</b></h3>
                 {% endif %}
                 {{therapist.gender}} 
             </div>
             <div class="col-2">
                 {% if loop.index == 1 %}
-                    <h3 class="display-6">Ethnicity:</h3>
+                    <h3 class="display-5 borderBottom"><b>Ethnicity:</b></h3>
                 {% endif %}
                 {{therapist.ethnicity}} 
             </div>

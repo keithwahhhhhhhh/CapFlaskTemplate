@@ -4,42 +4,47 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='local.css') }}" type ="text/css"/>
 <div class="row">
     <div class="col-4">
-        <h5 class="display-2">Discussions</h5>
+        <h4 class="display-3"><b>Discussions</b></h4>
     </div>
-    <div class="col">
-        <a href="/post/new" class="btn btn-primary btn-sm mt-5" role="button">New Post</a>
+    <div class="col-4">
+        <a href="/post/new" class="btn btn-dark btn-sm mt-4" role="button">New Post</a>
     </div>
 </div>
+<br>
 
 {% if posts %}
     {% for post in posts %}
-        <div class="row border-bottom">
-            <div class="col-2">
+        <div class="row borderBottom">
+            <div class="col-3">
                 {% if loop.index == 1 %}
-                <h3 class="display-5">Date</h3>
+                <h3 class="display-5 borderBottom">  Date</h3>
                 {% endif %}
-
+                <br>
                 <a href="/post/{{post.id}}">
                     {{moment(post.createdate).calendar()}}
                 </a>
             </div>
-            <div class="col-2">
+            <div class="col-3">
                 {% if loop.index == 1 %}
-                <h3 class="display-5">User</h3>
+                <h3 class="display-5 borderBottom">User</h3>
                 {% endif %}
-                {{post.author.username}}
+                <br>
+                {{post.author.username}} 
             </div>
-            <div class="col-2">
+            <div class="col-3">
                 {% if loop.index == 1 %}
-                    <h3 class="display-5">Title</h3>
+                    <h3 class="display-5 borderBottom">Title</h3>
                 {% endif %}
-                {{post.subject}}
+
+                <br>
+                {{post.subject}} 
             </div>
-            <div class="col-2">
+            <div class="col-3">
                 {% if loop.index == 1 %}
-                    <h3 class="display-5">Topic</h3>
+                    <h3 class="display-5 borderBottom">Topic</h3>
                 {% endif %}
-                {{post.posttopic}}
+                <br>
+                 {{post.posttopic}}
             </div>
         </div>
     {% endfor %}

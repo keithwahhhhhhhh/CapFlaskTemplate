@@ -22,7 +22,7 @@
     <h1 class="display-5">Topic: {{post.posttopic}} </h1>
     <br>
     <br>
-    <h1 class="display-5"> {{post.content}}</h1>
+    <h1 class="display-5">Description: {{post.content}}</h1>
     <p class="fs-3 text-break"> 
         {% if post.author.image %}
         <img width="120" class="img-thumbnail float-start me-2" src="data:image;base64,{{base64encode(post.author.image.read())}}">

@@ -3,36 +3,38 @@
 {% block body %}
 <link rel="stylesheet" href="{{ url_for('static', filename='local.css') }}" type ="text/css"/>
         <h1>Create a new post</h1>
+        <br>
 
         <form method=post>
             {{ form.hidden_tag() }}
             <p>
-                {{ form.subject.label }} <br>
+                <b>Title: </b> <br>
                 {{ form.subject(size=64) }}
                 <!--List the errors for this field-->
                 {% for error in form.subject.errors %}
                     <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
-           
-
-            {{ form.content.label }} <br>
-            {{ form.content(cols=64, rows=10) }}
+            <br>
+            <p>
+                <b>Topic of this post:</b> <br>
+                {{ form.posttopic() }}
+                <!--List the errors for this field-->
+                {% for error in form.posttopic.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+                
+            </p>
+            <br>
+            <b>Enter text here:</b> <br>
+            {{ form.content(cols=64, rows=5) }}
             <!--List the errors for this field-->
             {% for error in form.content.errors %}
                 <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
             
-        <p>
-            Topic of this post: <br>
-            {{ form.posttopic() }}
-            <!--List the errors for this field-->
-            {% for error in form.posttopic.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-            
-        </p>
+
             <p>
                 {{form.submit()}}
             </p>

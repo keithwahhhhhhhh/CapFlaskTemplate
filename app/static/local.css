@@ -33,6 +33,11 @@ https://www.w3schools.com/css/css3_gradients.asp
     text-align: center;
 }
 
+.centertext15 {
+    font-size: 15px;
+    text-align: center;
+}
+
 .sign-in {
     font-size: 20px;
     
@@ -44,4 +49,23 @@ https://www.w3schools.com/css/css3_gradients.asp
 
 .videos {
     font-size: 30px;
+}
+
+.borderBottom{
+    border-bottom-style: inset;
+    border-bottom-color: rgb(54,69,79);
+    border-bottom-width: 3px;
+
+}
+
+.borderLeft {
+    border-left-style: inset;
+    border-left-color: rgb(54,69,79);
+    border-left-width: 3px;
+}
+
+.borderRight {
+    border-right-style: inset;
+    border-right-color: rgb(54,69,79);
+    border-right-width: 3px;
 }

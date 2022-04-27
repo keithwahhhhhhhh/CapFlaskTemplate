@@ -21,22 +21,28 @@
 
     <h1 class="display-5">Name of topic: {{resource.topic}}</h1>
     <br>
+    <h1 class = "display-5">Type of resource: {{resource.restype}} </h1>
+    <br>
     <h1 class="display-5">What is this resource about?: {{resource.description}}</h1>
+    <br>
+    <br>
     <p class="fs-3 text-break"> 
         {% if resource.author.image %}
         <img width="120" class="img-thumbnail float-start me-2" src="data:image;base64,{{base64encode(resource.author.image.read())}}">
         {% endif %}
-         <p>  Type of resource: {{resource.restype}} </p>
+       
     </p>
     <br>
-    <a href="/resComment/new/{{resource.id}}" class="btn btn-primary btn-sm" role="button">New Comment</a>
-    <br>
+    <a href="/resComment/new/{{resource.id}}" class="btn btn-dark btn-sm  mt-1" role="button">Add a comment</a>
+
     <div class="ms-5">
     {% if resComments %}
     <br>
+    <br>
+    <br>
     <h1 class="display-5">Comments</h1>
     <br>
-    {% for resComment in resComments %}
+   <b> {% for resComment in resComments %}
         {% if current_user == resComment.author %}
             <a href="/resComment/delete/{{resComment.id}}"><img width="20" src="/static/delete.png"></a> 
             <a href="/resComment/edit/{{resComment.id}}"><img width="20" src="/static/edit.png"></a>
@@ -57,5 +63,5 @@
 {% else %}
     <h1 class="display-5">No Post</h1>
 {% endif %}
-
+</b>
 {% endblock %}

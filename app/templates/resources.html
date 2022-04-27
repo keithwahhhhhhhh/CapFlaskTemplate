@@ -4,21 +4,21 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='local.css') }}" type ="text/css"/>
 
 <div class="row">
-    <div class="col-2">
-        <h2 class="display-7">All Resources</h2>
+    <div class="col-4">
+        <h4 class="display-4">All Resources</h4>
     </div>
-    
-    <div class="col">
-        <a href="/resource/new" class="btn btn-primary btn-sm mt-5" role="button">Upload a resource</a>
+    <div class="col-4">
+        <a href="/resource/new" class="btn btn-dark btn-sm mt-4" role="button">Upload a resource</a>
     </div>
 </div>
 
+
 {% if resources %}
     {% for resource in resources %}
-        <div class="row border-bottom">
+        <div class="row borderBottom">
             <div class="col-2">
                 {% if loop.index == 1 %}
-                <h3 class="display-5">Date</h3>
+                <h3 class="display-5 borderBottom">Date</h3>
                 {% endif %}
 
                 <a href="/resource/{{resource.id}}">
@@ -27,31 +27,31 @@
             </div>
             <div class="col-2">
                 {% if loop.index == 1 %}
-                <h3 class="display-5">User</h3>
+                <h3 class="display-5 borderBottom">User</h3>
                 {% endif %}
                 {{resource.author.username}}
             </div>
             <div class="col-2">
                 {% if loop.index == 1 %}
-                    <h3 class="display-5">Topic</h3>
+                    <h3 class="display-5 borderBottom">Title</h3>
                 {% endif %}
                 {{resource.topic}}
             </div>
             <div class="col-2">
                 {% if loop.index == 1 %}
-                    <h5 class="display-5">Desc.</h5>
+                    <h5 class="display-5 borderBottom">Desc.</h5>
                 {% endif %}
                 {{resource.description}}
             </div>
             <div class="col-2">
                 {% if loop.index == 1 %}
-                    <h3 class="display-5">Type</h3>
+                    <h3 class="display-5 borderBottom">Type</h3>
                 {% endif %}
                 {{resource.restype}}
             </div>
             <div class="col-2">
                 {% if loop.index == 1 %}
-                <h3 class="display-5">Link</h3>
+                <h3 class="display-5 borderBottom">Link</h3>
                 {% endif %}
                 {{resource.link}}
             </div>

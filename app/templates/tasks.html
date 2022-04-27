@@ -7,39 +7,45 @@
         <h5 class="display-2">Daily Tasks</h5>
     </div>
     <div class="col">
-        <a href="/task/new" class="btn btn-primary btn-sm mt-5" role="button">Enter your entry for the day: </a>
+        <a href="/task/new" class="btn btn-dark btn-sm mt-4" role="button">Enter your entry for the day: </a>
     </div>
 </div>
 
 {% if tasks %}
     {% for task in tasks %}
-        <div class="row border-bottom">
+        <div class="row borderBottom">
             <div class="col-2">
                 {% if loop.index == 1 %}
-                <h3 class="display-5">Date</h3>
+                <h3 class="display-5 borderBottom">Date</h3>
                 {% endif %}
 
                 <a href="/task/{{task.id}}">
                     {{moment(task.createdate).calendar()}}
                 </a>
             </div>
-            <div class="col-3">
+            <div class="col-2">
                 {% if loop.index == 1 %}
-                    <h3 class="display-7">How you felt that day</h3>
+                    <h3 class="display-7 borderBottom">Mood rating 1-10</h3>
                 {% endif %}
                 {{task.moodRating}}
             </div>
-            <div class="col-3">
+            <div class="col-2">
                 {% if loop.index == 1 %}
-                    <h3 class="display-7">How long did you sleep today?</h3>
+                    <h3 class="display-7 borderBottom">Hours of sleep:</h3>
                 {% endif %}
                 {{task.sleepTime}}
             </div>
-            <div class="col-3">
+            <div class="col-2">
                 {% if loop.index == 1 %}
-                    <h3 class="display-7">Amount of work for the day:</h3>
+                    <h3 class="display-7 borderBottom">Amount of work:</h3>
                 {% endif %}
                 {{task.work}}
+            </div>
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                    <h3 class="display-7 borderBottom">Thoughts for the day:</h3>
+                {% endif %}
+                {{task.thoughts}}
             </div>
         </div>
     {% endfor %}

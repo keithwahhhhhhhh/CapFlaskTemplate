@@ -2,22 +2,31 @@
 
 {% block body %}
 <link rel="stylesheet" href="{{ url_for('static', filename='local.css') }}" type ="text/css"/>
-        <h1>Upload a resource </h1>
+        <h1><b>Upload a resource</b> </h1>
         <br>
 
         <form method=post>
             {{ form.hidden_tag() }}
             <p>
-                {{ form.topic.label }} <br>
+                <b>Title</b> <br>
                 {{ form.topic(size=64) }}
                 <!--List the errors for this field-->
                 {% for error in form.topic.errors %}
                     <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
-           
+            
+            <p>
+                <b>Type of resource: </b> <br>
+                {{ form.restype() }}
+                <!--List the errors for this field-->
+                {% for error in form.restype.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+                
+            </p>
 
-            {{ form.description.label }} <br>
+            <b>Enter text here:</b> <br>
             {{ form.description(cols=64, rows=10) }}
             <!--List the errors for this field-->
             {% for error in form.description.errors %}
@@ -25,17 +34,9 @@
             {% endfor %}
         </p>
             
+
         <p>
-            {{ form.restype.label }} <br>
-            {{ form.restype() }}
-            <!--List the errors for this field-->
-            {% for error in form.restype.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-            
-        </p>
-        <p>
-            {{ form.link.label }} <br>
+           <b>{{ form.link.label }}</b>  <br>
             {{ form.link(size=64) }}
             <!--List the errors for this field-->
             {% for error in form.link.errors %}

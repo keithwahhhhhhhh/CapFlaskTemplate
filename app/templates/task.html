@@ -29,8 +29,6 @@
     <br>
     <h1 class="display-7">Exercises: {{task.exercises}}</h1>
     <br>
-    <h1 class="display-7">Exercises: {{task.exercises}}</h1>
-    <br>
     <h1 class="display-7">Meals: {{task.meals}}</h1>
     <br>
     <h1 class="display-7">What you ate: {{task.meal}}</h1>
@@ -39,13 +37,9 @@
     <br>
     <h1 class="display-7">Did you shower: {{task.shower}}</h1>
     <br>
-    <h1 class="display-7">Thoughts: {{task.thoughts}}</h1>
-    <p class="fs-3 text-break"> 
-        {% if task.author.image %}
-        <img width="120" class="img-thumbnail float-start me-2" src="data:image;base64,{{base64encode(task.author.image.read())}}">
-        {% endif %}
+    <h1 class="display-7">Did you have any thoughts?: {{task.thoughts}}</h1>
+
         
-    </p>
     <br>
     
     <br>

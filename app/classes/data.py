@@ -83,8 +83,10 @@ class Therapist(Document):
     docLocation = StringField()
     sexuality = StringField()
     timesAvailable = StringField()
+    TPimage = FileField()
     createdate = DateTimeField(default=dt.datetime.utcnow)
     modifydate = DateTimeField()
+
 
     meta = {
         'ordering': ['-createdate']

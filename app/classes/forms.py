@@ -91,6 +91,7 @@ class TherapistForm(FlaskForm):
     age = StringField('age', validators=[DataRequired()])
     sexuality = StringField('sexuality', validators=[DataRequired()])
     timesAvailable = StringField('timesAvailable', validators=[DataRequired()])
+    TPimage = FileField("Image") 
     submit = SubmitField('Submit')
 
 class PostForm(FlaskForm):
