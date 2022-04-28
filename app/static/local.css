@@ -9,6 +9,13 @@ body {
     margin-right: auto;
     width: 50%;
   }
+.centerImage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    height: 200px;
+  }
 
 .navbar {
     background: rgb(90,243,255);

@@ -17,25 +17,29 @@
         <a data-toggle="tooltip" data-placement="top" title="Edit Post" href="/therapist/edit/{{therapist.id}}">
             <img width="40" class="bottom-image" src="/static/edit.png">
         </a>
+        <br>
     {% endif %}
-
-    <h1 class="display-5">Name: {{therapist.docName}}</h1>
     <br>
-    <h1 class="display-5">Age: {{therapist.age}} </h1>
+    <img class="img-thumbnail centerImage" width="200" src="data:image;base64,{{base64encode(current_user.image.read())}}">
     <br>
-    <h1 class="display-5">Location: {{therapist.docLocation}}</h1>
     <br>
-    <h1 class="display-5">Gender: {{therapist.gender}}</h1>
+    <h1 class="display-5 centerText">Name: {{therapist.docName}}</h1>
     <br>
-    <h1 class="display-5">Ethnicity: {{therapist.ethnicity}}</h1>
+    <h1 class="display-5 centerText">Age: {{therapist.age}} </h1>
     <br>
-    <h1 class="display-5">Sexuality: {{therapist.sexuality}}</h1>
+    <h1 class="display-5 centerText">Location: {{therapist.docLocation}}</h1>
     <br>
-    <h1 class="display-5">Times Available: {{therapist.timesAvailable}}</h1>
+    <h1 class="display-5 centerText">Gender: {{therapist.gender}}</h1>
     <br>
-    <h1 class="display-5">Email: {{therapist.docEmail}}</h1>
+    <h1 class="display-5 centerText">Ethnicity: {{therapist.ethnicity}}</h1>
     <br>
-    <h1 class="display-5">Description: {{therapist.docDescription}}</h1>
+    <h1 class="display-5 centerText">Sexuality: {{therapist.sexuality}}</h1>
+    <br>
+    <h1 class="display-5 centerText">Times Available: {{therapist.timesAvailable}}</h1>
+    <br>
+    <h1 class="display-5 centerText">Email: {{therapist.docEmail}}</h1>
+    <br>
+    <h1 class="display-5 centerText">Description: {{therapist.docDescription}}</h1>
     <br>
     <p class="fs-3 text-break"> 
         {% if therapist.author.image %}
@@ -63,6 +67,8 @@
         <p class="fs-3">
             {{TPComment.TPDescription}}
         </p>
+        <br>
+        
     {% endfor %}
     {% else %}
     <br>

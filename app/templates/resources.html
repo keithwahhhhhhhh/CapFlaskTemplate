@@ -6,13 +6,15 @@
 <div class="row">
     <div class="col-4">
         <h4 class="display-4">All Resources</h4>
+        <h5><b>Welcome to the resources page. On this page you can upload any resources you want to provide to users.
+        </b></h5>
     </div>
     <div class="col-4">
         <a href="/resource/new" class="btn btn-dark btn-sm mt-4" role="button">Upload a resource</a>
     </div>
 </div>
 
-
+<br>
 {% if resources %}
     {% for resource in resources %}
         <div class="row borderBottom">

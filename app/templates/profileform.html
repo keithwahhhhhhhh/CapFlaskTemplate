@@ -22,16 +22,18 @@
         <p>
             {{ form.image.label }}<br>
             {% if current_user.image %}
-                <img class="img-thumbnail" width="100" src="data:image;base64,{{base64encode(current_user.image.read())}}"> <br>
+                <img class="img-thumbnail" width="300" src="data:image;base64,{{base64encode(current_user.image.read())}}"> <br>
             {% else %}
-                <img class="img-thumbnail" width = "100" src="/static/appicon.jpg">
+                <img class="img-thumbnail" width = "300" src="/static/appicon.jpg">
             {% endif %} <br>
+            <h2> If you signing up as a therapist, please provide a real picture of yourself.</h2>
             {{ form.image() }}<br>
             {% for error in form.image.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
-    
+        <br>
+        
         <p>
             {{ form.role.label }}<br>
             {{ form.role() }}<br>
