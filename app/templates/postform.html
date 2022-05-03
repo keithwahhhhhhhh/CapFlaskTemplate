@@ -11,7 +11,6 @@
             <p>
                 <b>Title: </b> <br>
                 {{ form.subject(size=64) }}
-                <!--List the errors for this field-->
                 {% for error in form.subject.errors %}
                     <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
@@ -20,7 +19,6 @@
             <p>
                 <b>Topic of this post:</b> <br>
                 {{ form.posttopic() }}
-                <!--List the errors for this field-->
                 {% for error in form.posttopic.errors %}
                     <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
@@ -28,8 +26,7 @@
             </p>
             <br>
             <b>Enter text here:</b> <br>
-            {{ form.content(cols=64, rows=5) }}
-            <!--List the errors for this field-->
+            {{ form.content(cols=64, rows=5) }
             {% for error in form.content.errors %}
                 <span style="color: red;">[{{ error }}]</span>
             {% endfor %}

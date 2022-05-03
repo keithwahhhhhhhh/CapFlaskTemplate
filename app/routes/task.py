@@ -38,25 +38,17 @@ def moodList():
 
     fig, ax = plt.subplots(figsize=(11, 11))
 
-    # # Set axis ranges; by default this will put major ticks every 25.
     ax.set_xlim(0, 10)
     ax.set_ylim(0, 10)
 
-    # # Change major ticks to show every 20.
     ax.xaxis.set_major_locator(MultipleLocator(1))
-    ax.yaxis.set_major_locator(MultipleLocator(1))
-
-    # # Turn grid on for both major and minor ticks and style minor slightly
-    # # differently.
-    #ax.grid(which='major', color='#CCCCCC', linestyle='--')
- 
+    ax.yaxis.set_major_locator(MultipleLocator(1)) 
     n, bins, patches = plt.hist(moodList, 10)
 
     plt.xlabel('Mood Rating Value')
     plt.ylabel('Number of Mood Rating Value')
     plt.title('Histogram of Mood Rating')
     plt.grid(True)
-    #plt.show()
     output = io.BytesIO()
     FigureCanvas(fig).print_png(output)
 
@@ -74,22 +66,13 @@ def sleepList():
 
     sleepList.sort()
 
-    #plt.rcParams["figure.figsize"] = [1, 1]
-    #plt.rcParams["figure.autolayout"] = True
-
     fig, ax = plt.subplots(figsize=(10, 10))
 
-    # # Set axis ranges; by default this will put major ticks every 25.
     ax.set_xlim(0, 12)
     ax.set_ylim(0, 10)
 
-    # # Change major ticks to show every 20.
     ax.xaxis.set_major_locator(MultipleLocator(1))
     ax.yaxis.set_major_locator(MultipleLocator(1))
-
-    # # Turn grid on for both major and minor ticks and style minor slightly
-    # # differently.
-    #ax.grid(which='major', color='#CCCCCC', linestyle='--')
  
     n, bins, patches = plt.hist(sleepList, 10)
 

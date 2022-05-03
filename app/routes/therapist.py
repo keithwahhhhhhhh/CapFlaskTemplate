@@ -93,7 +93,6 @@ def TherapistEdit(therapistID):
     if current_user != editTherapist.author:
         flash("You can't edit an entry you don't own.")
         return redirect(url_for('therapist',therapistID=therapistID))
-    # get the form object
     form = TherapistForm()
 
     if form.validate_on_submit():
