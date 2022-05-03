@@ -64,12 +64,12 @@ class ResourceForm(FlaskForm):
     submit = SubmitField('Submit')
 
 class TaskForm(FlaskForm):
-    sleepTime = SelectField('sleepTime',choices=[("Less than 1 hour","Less than 1 Hour "),("1 Hour","1 Hour"),("2 Hours","2 Hours"),("2 Hours","2 Hours"),("3 Hours","3 Hours"),("4 Hours","4 Hours"),("5 Hours","5 Hours"),("6 Hours","6 Hours"),("7 Hours","7 Hours"),("8 Hours","8 Hours"),("9 Hours","9 Hours"),("10 Hours","10 Hours"),("10+ Hours","10+ Hours")])
+    sleepTime = SelectField('sleepTime',choices=[(0,0),(1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10),(11,11),(12,12)])
     work = SelectField('work',choices=[("All work completed","All work completed"),("Most work completed","Most work completed"),("A good amount of work completed","A good amount of work completed"),("Very little work completed","Very little work completed"),("No work completed","No work completed")])
     exercise = SelectField('exercise',choices=[("Yes","Yes"),("No","No")])
     exercises = TextAreaField('exercises', validators=[DataRequired()])
-    moodRating = SelectField('moodRating',choices=[("1","1"),("2","2"),("3","3"),("4","4"),("5","5"),("6","6"),("7","7"),("8","8"),("9","9"),("10","10")])
-    meals = SelectField('meals',choices=[("Breakfast","Breakfast"),("Lunch","Lunch"),("Dinner","Dinner")])
+    moodRating = SelectField('moodRating',choices=[(0,0),(1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10)])
+    meals = SelectField('meals',choices=[("Breakfast","Breakfast"),("Lunch","Lunch"),("Dinner","Dinner"),("Breakfast and Lunch","Breakfast and Lunch"),("Lunch and Dinner","Lunch and Dinner"),("Dinner and Lunch","Dinner and Lunch"),("All 3","All 3")])
     meal = TextAreaField('Meal', validators=[DataRequired()])
     thoughts = TextAreaField('thoughts', validators=[DataRequired()])
     dental = SelectField('dental',choices=[("Brushed once, no flossing","Brushed once, no flossing"),("Brushed twice, no flossing","Brushed twice, no flossing"),("Brushed once with flossing","Brushed once with flossing"),("Brushed twice with flossing","Brushed twice with flossing"),("Other","Other")])

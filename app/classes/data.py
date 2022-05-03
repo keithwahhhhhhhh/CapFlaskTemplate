@@ -1,13 +1,12 @@
 from app import app
 from flask import flash
 from flask_login import UserMixin
-from mongoengine import FileField, EmailField, StringField, ReferenceField, DateTimeField, CASCADE
+from mongoengine import FileField, EmailField, StringField, ReferenceField, DateTimeField, CASCADE, IntField
 from flask_mongoengine import Document
 from werkzeug.security import generate_password_hash, check_password_hash
 import datetime as dt
 import jwt
 from time import time
-#from bson.objectid import ObjectId
 
 class User(UserMixin, Document):
     username = StringField()
@@ -17,7 +16,6 @@ class User(UserMixin, Document):
     email = EmailField()
     image = FileField()
     role = StringField()
-    #mascot = StringField()
        
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -54,11 +52,11 @@ class Resource(Document):
 
 class Task(Document):
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
-    sleepTime = StringField()
+    sleepTime = IntField()
     work = StringField()
     exercise = StringField()
     exercises = StringField()
-    moodRating = StringField()
+    moodRating = IntField()
     meals = StringField()
     meal = StringField()
     thoughts = StringField()

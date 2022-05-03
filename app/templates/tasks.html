@@ -9,8 +9,11 @@
     <div class="col">
         <a href="/task/new" class="btn btn-dark btn-sm mt-4" role="button">Enter your entry for the day: </a>
     </div>
-    <div class="col-4">
-        <a href="/task/moodRating" class="btn btn-dark btn-sm mt-4" role="button">View graph for mood rating: </a>
+    <div class="col">
+        <a href="/task/moodRating" target="popup" class="btn btn-dark btn-sm mt-4" role="button">View histogram for mood ratings: </a>
+    </div>
+    <div class="col">
+        <a href="/task/sleepTimes" target="popup" class="btn btn-dark btn-sm mt-4" role="button">View histogram for sleep times: </a>
     </div>
 </div>
 
@@ -51,7 +54,9 @@
                 {{task.thoughts}}
             </div>
         </div>
+        
     {% endfor %}
+    <br><br><br>    
 {% else %}
 <br> 
 <br>     

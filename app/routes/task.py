@@ -1,11 +1,16 @@
 from app import app, login
 import mongoengine.errors
-from flask import render_template, flash, redirect, url_for
+from flask import render_template, flash, redirect, url_for, Response
 from flask_login import current_user
 from app.classes.data import Task
 from app.classes.forms import TaskForm
 from flask_login import login_required
 import datetime as dt
+import matplotlib.pyplot as plt
+from matplotlib.ticker import MultipleLocator
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+import io
+
 
 @app.route('/task/list')
 
@@ -17,13 +22,86 @@ def taskList():
     return render_template('tasks.html',tasks=tasks)
 
 @app.route('/task/moodRating')
-
 @login_required
 def moodList():
 
     tasks = Task.objects()
+    moodList = []
+    for task in tasks:
+        moodList.append(task.moodRating)
+        
 
-    return render_template('moodGraph.html',tasks=tasks)
+    moodList.sort()
+
+    plt.rcParams["figure.figsize"] = [1, 1]
+    plt.rcParams["figure.autolayout"] = True
+
+    fig, ax = plt.subplots(figsize=(11, 11))
+
+    # # Set axis ranges; by default this will put major ticks every 25.
+    ax.set_xlim(0, 10)
+    ax.set_ylim(0, 10)
+
+    # # Change major ticks to show every 20.
+    ax.xaxis.set_major_locator(MultipleLocator(1))
+    ax.yaxis.set_major_locator(MultipleLocator(1))
+
+    # # Turn grid on for both major and minor ticks and style minor slightly
+    # # differently.
+    #ax.grid(which='major', color='#CCCCCC', linestyle='--')
+ 
+    n, bins, patches = plt.hist(moodList, 10)
+
+    plt.xlabel('Mood Rating Value')
+    plt.ylabel('Number of Mood Rating Value')
+    plt.title('Histogram of Mood Rating')
+    plt.grid(True)
+    #plt.show()
+    output = io.BytesIO()
+    FigureCanvas(fig).print_png(output)
+
+    return Response(output.getvalue(), mimetype='image/png')
+
+
+@app.route('/task/sleepTimes')
+@login_required
+def sleepList():
+
+    tasks = Task.objects()
+    sleepList = []
+    for task in tasks:
+        sleepList.append(int(task.sleepTime))
+
+    sleepList.sort()
+
+    #plt.rcParams["figure.figsize"] = [1, 1]
+    #plt.rcParams["figure.autolayout"] = True
+
+    fig, ax = plt.subplots(figsize=(10, 10))
+
+    # # Set axis ranges; by default this will put major ticks every 25.
+    ax.set_xlim(0, 12)
+    ax.set_ylim(0, 10)
+
+    # # Change major ticks to show every 20.
+    ax.xaxis.set_major_locator(MultipleLocator(1))
+    ax.yaxis.set_major_locator(MultipleLocator(1))
+
+    # # Turn grid on for both major and minor ticks and style minor slightly
+    # # differently.
+    #ax.grid(which='major', color='#CCCCCC', linestyle='--')
+ 
+    n, bins, patches = plt.hist(sleepList, 10)
+
+    plt.xlabel('Number of hours slept')
+    plt.ylabel('Number of times you spent sleeping those amount of hours')
+    plt.title('Histogram of Sleep Hours')
+    plt.grid(True)
+    #plt.show()
+    output = io.BytesIO()
+    FigureCanvas(fig).print_png(output)
+
+    return Response(output.getvalue(), mimetype='image/png')
 
 @app.route('/task/<taskID>')
 
